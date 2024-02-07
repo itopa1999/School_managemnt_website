@@ -1,0 +1,83 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Levy </h1>
+</div>
+
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-5 d-noned-lg-block "><br><br><br><center><i class="fa fa-credit-card fa-10x"></i></center></div>
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Add Levy</h1>
+                      </div>
+                      <form method="POST" class="user">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            {% render_field form.name|attr:'required:true' type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Name of levy" %}
+
+                          </div>
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                              Add Levy
+                          </button>
+                         
+                        </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+{% endblock content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studentlevy</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+</head>
+<link rel="stylesheet" type="text/css" href="{% static '/css/newstudentstaff.css' %}">
+    <body onload="typeWriter()">
+      <!-- top navbar -->
+       {% include 'dashboard/navbar.html' %} 
+       <form id="regForm" action="" method="POST">
+        {% csrf_token %}
+<center><img border="0" alt="logo" src="{% static '/images/icon.png' %}" width="100" height="100"></center>
+      <h1>ADD TO STUDENT LEVY</h1>
+      <!-- One "tab" for each step in the form: -->
+      <hr><br>
+        <label for="fname">Name of fee</label>
+        {{form.name}}
+        <br><br><br>
+      </div>
+    </div>
+    <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="submit" id="nextBtn" onclick="nextPrev(1)">submit</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+      </div>
+    </form>
+    <script type="text/javascript" src="{% static '/js/newstudentstaff.js' %}"></script>
+</body>
+</html>

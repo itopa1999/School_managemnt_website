@@ -1,0 +1,73 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Student Transaction</h1>
+</div>{% if stu %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Student Lists</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Matric NO</th>
+                                            <th>Department</th>
+                                            <th>level</th>
+                                            <th>Set</th>
+                                            <th>View Transaction</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Matric NO</th>
+                                            <th>Department</th>
+                                            <th>level</th>
+                                            <th>Set</th>
+                                            <th>View Transaction</th>
+                                        </tr>
+                                    </tfoot>
+                                    
+                                  
+                                    <tbody>
+                                        {% for i in stu %}
+                                        <tr>
+                                            <td>{{i.name}}</td>
+                                            <td>{{i.matric_no}}</td>
+                                            <td>{{i.department}}</td>
+                                            <td>{{i.level}}</td>
+                                            <td>{{i.adm_year}}</td>
+                                            <td style="width:110px"><center><a href="{% url 'hodsummary' i.id %}"><i class="fa fa-eye" style="font-size:24px"></i></center></td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                                {% else %}
+nothing is found hrer
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+
+            
+
+{% endblock content %}

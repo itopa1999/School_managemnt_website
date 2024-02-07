@@ -1,0 +1,534 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+ <div class="container-fluid">
+
+   <!-- Page Heading -->
+   <div class="d-sm-flex align-items-center justify-content-between mb-4">
+       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+   </div>
+   <marquee>
+    <strong id="wlc"></strong>
+    {% if nott %}
+            {% for i in nott %}<img class="rounded-circle mr-1 ml-3 small text-gray-500" src="{{i.profile_pic.url}}"
+            alt="..." height=50 width=50> {{i.sender}} || {{i.title}}......... {% endfor %}
+            {% else %}
+            <strong>.......!!!!No notification for today yet!!!.....</strong>
+            {% endif %} <b>Do have a good day</b>
+    </marquee>
+<br><br>
+   <!-- Content Row -->
+   <div class="row">
+
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Student</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_students}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Lecturer</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{lecount}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Faculty
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{fac}}</div>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-building fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Total Department</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{dept}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-hotel fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <!-- Content Row -->
+
+   <div class="row">
+
+       <!-- Area Chart -->
+       <div class="col-xl-8 col-lg-7">
+           <div class="card shadow mb-4">
+               <!-- Card Header - Dropdown -->
+               <div
+                   class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                   <div class="dropdown no-arrow">
+                           
+                   </div>
+               </div>
+               <!-- Card Body -->
+               <div class="card-body">
+                   <div class="chart-bar">
+                       <canvas id="myBarChart"></canvas>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <!-- Pie Chart -->
+       <div class="col-xl-4 col-lg-5">
+           <div class="card shadow mb-4">
+               <!-- Card Header - Dropdown -->
+               <div
+                   class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                   <div class="dropdown no-arrow">
+                        
+                       
+                   </div>
+               </div>
+               <!-- Card Body -->
+               <div class="card-body">
+                   <div class="chart-pie pt-4 pb-2">
+                       <canvas id="myPieChart"></canvas>
+                   </div>
+                   <div class="mt-4 text-center small">
+                       <span class="mr-2">
+                           <i class="fas fa-circle text-success"></i> FEMALE
+                       </span>
+                       <span class="mr-2">
+                           <i class="fas fa-circle text-primary"></i> MALE
+                       </span>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- Content Row -->
+   <div class="row">
+
+       <!-- Content Column -->
+       <div class="col-lg-6 mb-4">
+
+           <!-- Project Card Example -->
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <h6 class="m-0 font-weight-bold text-primary">School Portifio</h6>
+               </div>
+               <div class="card-body">
+                   <h4 class="small font-weight-bold">Total HND PART-TIME student <span
+                           class="float-right">{{hndpt}}%</span></h4>
+                   <div class="progress mb-4">
+                       <div class="progress-bar bg-danger" role="progressbar" style="width: {{hndpt}}%"
+                            aria-valuemin="0" aria-valuemax="1000"></div>
+                   </div>
+                   <h4 class="small font-weight-bold">Total HND FULL-TIME student <span
+                           class="float-right">{{hndft}}%</span></h4>
+                   <div class="progress mb-4">
+                       <div class="progress-bar bg-warning" role="progressbar" style="width: {{hndft}}%"
+                            aria-valuemin="0" aria-valuemax="1000"></div>
+                   </div>
+                   <h4 class="small font-weight-bold">Total ND PART-TIME student<span
+                           class="float-right">{{ndpt}}%</span></h4>
+                   <div class="progress mb-4">
+                       <div class="progress-bar" role="progressbar" style="width: {{ndpt}}%"
+                            aria-valuemin="0" aria-valuemax="1000"></div>
+                   </div>
+                   <h4 class="small font-weight-bold">Total ND FULL-TIME student <span
+                           class="float-right">{{ndft}}%</span></h4>
+                   <div class="progress mb-4">
+                       <div class="progress-bar bg-info" role="progressbar" style="width: {{ndft}}%"
+                            aria-valuemin="0" aria-valuemax="1000"></div>
+                   </div>
+                   
+               </div>
+           </div>
+
+           <!-- Color System -->
+           
+           <div class="row">           
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodtable' %}" style="text-decoration:none;">
+                   <div class="card bg-success text-white shadow">
+                       <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-table fa-3x"></i></center>
+                            </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>View Timetable</center></div>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodexamtable' %}" style="text-decoration:none;">
+                   <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-table fa-3x"></i></center>
+                            </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>View Exam Timetable</center></div>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodtransactions' %}" style="text-decoration:none;">
+                   <div class="card bg-warning text-white shadow">
+                       <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-credit-card fa-3x"></i></center>
+                              </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>Student Transaction</div></center>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodCalendarView' %}" style="text-decoration:none;">
+                   <div class="card bg-danger text-white shadow">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-calendar fa-3x"></i></center>
+                              </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>Calendar Events</div></center>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodviewcourse' %}" style="text-decoration:none;">
+                   <div class="card bg-secondary text-white shadow">
+                       <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-book fa-3x"></i></center>
+                              </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>View Course</div></center>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodstucourse' %}" style="text-decoration:none;">
+                   <div class="card bg-success text-white shadow">
+                       <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-calendar-plus fa-3x"></i></center>
+                              </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>Student Registered Course</div></center>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodallstudents' %}" style="text-decoration:none;">
+                   <div class="card bg-light text-black shadow">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-user-graduate fa-3x" style="font-size:60px;color:rgba(0, 0, 0, 0.568);"></i></center>
+                              </div>
+                           <div class="text-dark h4 pt-4 font-weight-bold"><center>All Student</div></center>
+                       </div>
+                   </div>
+                </a>
+               </div>
+               <div class="col-lg-6 mb-4">
+                <a href="{% url 'hodalllecturers' %}" style="text-decoration:none;">
+                   <div class="card bg-dark text-white shadow">
+                       <div class="card-body">
+                            <div class="card-body-icon">
+                                <center><i class="fa fa-chalkboard-teacher fa-3x"></i></center>
+                              </div>
+                           <div class="text-white h4 pt-4 font-weight-bold"><center>All Lecturers</div></center>
+                       </div>
+                   </div>
+               </div>
+            </a>
+           </div>
+
+       </div>
+
+       <div class="col-lg-6 mb-4">
+
+           <!-- Illustrations -->
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <h6 class="m-0 font-weight-bold text-primary">Ajayi Polytechnic Vision</h6>
+               </div>
+               <div class="card-body">
+                   
+                   <p>To raise giants and produce skilled technicians and managers whoa are enterpreneurship driven.</p>
+                 <p></p>
+               </div>
+           </div>
+
+           <!-- Approach -->
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <h6 class="m-0 font-weight-bold text-primary">Ajayi Polytechnic Mission</h6>
+               </div>
+               <div class="card-body">
+                  <p> Ajayi Polytechnic is focused on providing our graduates with a technical and managerial skills that
+                   will make them sought after in their chosen fields and grooming them to ultimely set up their enterpreneurial 
+                   organisation in the future.</p>
+               </div>
+           </div>
+
+           <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Message</h6>
+            </div>
+            <div class="card-body">
+                {% for i in meg %}
+                        <div class="icon-circle bg-primary">
+                            <img class="rounded-circle" src="{{i.profile_pic.url}}"
+                            alt="..." height="50" width="50">
+                        </div>
+                        <div class="small text-gray-500">{{i.sender}} , {{i.date}}.</div>
+                <span class="font-weight-bold"><center>{{i.subject}}</center></span>
+                        <span class="font-weight-bold">{{i.message}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                <a class="dropdown-item text-center small text-gray-500" href="{% url 'hodviewmessage' %}">Show All Inbox</a>
+            </div>
+        </div>
+        </div>
+
+    
+   </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+<marquee>
+<b>DESIGN BY LUCKY, HND PROJECT<br></b>
+</marquee>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" onclick="topFunction()" id="myBtn" title="Go to top">
+<i class="fas fa-angle-up"></i>
+</a>
+</div>
+</div>
+
+
+<script src="{% static '/chart.js/Chart.min.js' %}"></script>
+
+ <script>
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+// Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: [{% for ma in ma %} '{{ma}}', {% endfor %}],
+    datasets: [{
+      data: [{% for fe in fe %} '{{fe}}', {% endfor %}],
+      backgroundColor: ['#4e73df', '#1cc88a',],
+      hoverBackgroundColor: ['#2e59d9', '#17a673',],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+
+
+
+
+
+
+
+
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+  // *     example: number_format(1234.56, 2, ',', ' ');
+  // *     return: '1 234,56'
+  number = (number + '').replace(',', '').replace(' ', '');
+  var n = !isFinite(+number) ? 0 : +number,
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
+      var k = Math.pow(10, prec);
+      return '' + Math.round(n * k) / k;
+    };
+  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || '').length < prec) {
+    s[1] = s[1] || '';
+    s[1] += new Array(prec - s[1].length + 1).join('0');
+  }
+  return s.join(dec);
+}
+
+// Bar Chart Example
+var ctx = document.getElementById("myBarChart");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [{% for name in name %} '{{name}}', {% endfor %}],
+    datasets: [{
+      label: "School Portifio",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: [{% for num in num %} '{{num}}', {% endfor %}],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'name'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
+          maxTicksLimit: 6
+        },
+        maxBarThickness: 50,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: true,
+          borderDash: [2],
+          zeroLineBorderDash: [7]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+        }
+      }
+    },
+  }
+});
+
+
+ </script>
+
+
+
+
+
+{% endblock content %}

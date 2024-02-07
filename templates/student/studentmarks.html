@@ -1,0 +1,35 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+<style> 
+  select {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 4px;
+      background-color: #f1f1f1;
+  }
+  </style>
+
+  <div class="container-fluid">
+    <!-- Info Alert -->
+   
+   
+   <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+       <h1 class=" dark h3 mb-0 text-gray" >Student Mark</h1>
+   </div>
+
+<form method="POST">
+  <select name="cou" class='border-info'>
+    <option>choose course</option>
+    {% for i in courses %}<option >{{i.course}}</option>{% endfor %}
+    
+  </select>
+
+  <input class="btn mt-3 btn-primary" type="submit">
+</form>
+
+</div>
+
+{% endblock content %}
+
+   

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>home</title>
+<link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+   <link rel="stylesheet" type="text/css" href="{% static '/css/homepage.css' %}">
+</head>
+<!-- background image -->
+<body onload="myFunction()" style="background-image: url('{% static '/images/bg1.png' %}');" >
+    <!-- boxes-->
+    <table id="box1">
+        <tr>
+            <th>Total Students</th>
+        </tr>
+        <tr>
+            <td>{{stu}}</td> 
+        </tr>
+    </table>
+    <table id="box1">
+        <tr>
+            <th>Total Staffs</th>
+        </tr>
+        <tr>
+            <td>{{sta}}</td> 
+        </tr>
+    </table>
+    <table id="box1">
+        <tr>
+            <th>Total Lecturer</th>
+        </tr>
+        <tr>
+            <td>{{lec}}</td> 
+        </tr>
+    </table>
+    <!-- sidenav bar -->
+<div class="container">
+    <div id="mySidenav" class="sidenav">
+        <form method="POST">
+        <a id="Logout" href="{% url 'logout' %}"> Logout</a>
+        </form>
+        <a href="{% url 'dashboard' %}" id="dashboard">DBoard</a>
+       
+        
+                
+       
+        <a href="{% url 'query' %}" id="Reports">Query</a>
+    </div>
+</div>
+<div id="snackbar">Welcome Back {{request.user}}</div>
+<script type="text/javascript" src="{% static '/js/homepage.js' %}"></script>
+</body>
+</html>

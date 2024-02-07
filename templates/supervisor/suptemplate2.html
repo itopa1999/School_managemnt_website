@@ -1,0 +1,49 @@
+{% extends 'supervisor/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">New Message</h1>
+</div>
+  <div class="card o-hidden border-0 shadow-lg my-5 col-sm-8" >
+      <div class="card-body p-0">
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 m-4">Message</h1>
+          </div>
+          <form method="POST" enctype="multipart/form-data" class="user">
+              {% csrf_token %}
+              <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                {% render_field form.groupID|attr:'required:true' class="form-control" style="height:50px; border-radius:50px;"  %}
+                  </div>
+                  <div class="col-sm-6">
+                    {% render_field form.lecturerID|attr:'required:true' class="form-control" style="height:50px; border-radius:50px;" %}
+
+                  </div>
+              </div>
+              <div class="form-group">
+                {% render_field form.subject|attr:'required:true' type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Message Subject"  %}
+
+              </div>
+              <div class="form-group">
+                {% render_field form.message|attr:'required:true' type="textarea" class="form-control" style="height:120px; border-radius:10px;" placeholder="Type Message..."  %}
+
+              </div>
+              
+              <div class="form-group" style="display:none">
+                  {% render_field form.sender type="hidden" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Description" %}
+                  {% render_field form.profile_pic type="hidden" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Description" %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-user btn-block col-sm-3 mb-3">
+              <i class="fa fa-share"> </i> Send
+          </button>
+        </form>
+      </div>
+  </div>
+{% endblock content %}

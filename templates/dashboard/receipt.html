@@ -1,0 +1,199 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		padding-top: 60px;
+	}
+	
+	/* Modal Content/Box */
+	.modal-content {
+		background: rgb(240, 239, 238);
+		margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+		border: 1px solid #888;
+		width: 40%; /* Could be more or less, depending on screen size */
+		height: fit-content;
+		border-radius: 10px;
+	}
+	.container {
+		margin: auto;
+		top: auto;
+		width: auto;
+		height: fit-content;
+		max-width: 500px;
+		text-align: center;
+		text-decoration: none;
+		background-image:url('{% static '/images/icon.png' %}');
+		background-repeat:no-repeat;
+		background-size:300px;
+		background-position:center;
+		font-weight:bolder;
+	}
+	
+	/* The Close Button (x) */
+	.bbb {
+		background-color:rgba(31, 26, 26, 0.329);
+		color: white;
+		padding: 16px 20px;
+		border: none;
+		cursor: pointer;
+		width: 50%;
+		opacity: 0.9;
+		border-radius:8px;
+	}
+	
+	
+	/* Add Zoom Animation */
+	.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+	}
+	
+	@-webkit-keyframes animatezoom {
+		from {-webkit-transform: scale(0)} 
+		to {-webkit-transform: scale(1)}
+	}
+		
+	@keyframes animatezoom {
+		from {transform: scale(0)} 
+		to {transform: scale(1)}
+	}
+	
+  
+	
+	/* Set a style for the submit button */
+	#doPrint {
+		background-color:rgb(37, 30, 30);
+		color: white;
+		padding: 16px 20px;
+		border: none;
+		cursor: pointer;
+		width: 50%;
+		opacity: 0.9;
+		border-radius:8px;
+	}
+	
+	#doPrint:hover {
+		opacity: 1;
+	}
+	#tablelist{
+	overflow: hidden;
+	white-space: nowrap;
+	max-width:150px;
+	word-wrap: break-word;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	#tabledata{
+	white-space: wrap;
+	max-width:300px;
+	word-wrap: break-word;
+	}
+</style>
+<body onload="document.getElementById('id01').style.display='block'";>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Printing receipt</h1>
+</div>
+
+
+
+<div class="container3">
+	<div id="id01" class="modal3">
+
+		<div class="modal-content animate1">
+	  
+		  <div class="container">
+			<div id="printDiv">
+				
+				<center id="top">
+				  <div class="logo"><img border="0" alt="logo" src="{% static '/images/icon.png' %}" width="100" height="100"></div>
+				  <div class="info"> 
+					<h2>Ajayi Polytecnic</h2>
+				  </div>
+				</center>
+				
+				<div id="mid">
+				  <div class="info">
+					<center>
+					<h2>Contact Info</h2>
+					<p> 
+						Address : Ikere-Ado Express=way Ikere-ekiti, Ekiti State</br>
+						Email   : AjayiPolytecnic@gmail.com</br>
+						Phone   : 08064160380</br></p></center>
+					</p>
+				  </div>
+				</div>
+				
+				<div id="bot">
+			<br>
+								<div id="table">
+									<table>
+										
+										<center><strong>{{tra.schoollevy}}</strong></center>
+										<tr class="service">
+											<td id="tablelist"><b><strong>{{tra.student}}</strong></b></td>
+											<td><b>computer science</b></td>
+										</tr>
+										<tr class="service">
+											<td id="tablelist"><b><strong>Credit Amount</strong></b></td>
+											<td id="tabledata"><b>{{tra.credit}}</b></td>
+										</tr>
+			
+										<tr class="service">
+											<td id="tablelist"><b><strong>Debit Amount</strong></b></td>
+											<td id="tabledata"><b>{{tra.debit}}</b></td>
+										</tr>
+										<tr class="service">
+											<td><b><strong>Description</strong></b></td>
+											<td id="tabledata"><b>{{tra.descrip}}</b></td>
+										</tr>
+			
+										<tr class="service">
+											<td id="tablelist"><b><strong>Transaction Date</strong></b></td>
+											<td id="tabledata"><b>{{tra.date}}</b></td>
+										<tr class="tabletitle">
+											<td class="Rate"><b><br><br>Bursar signature</b></td>
+											<td class="payment"><b><br><br>.......................................................</b></td>
+										</tr>
+			
+									</table><br>
+								</div><!--End Table-->
+			
+								<div id="legalcopy">
+									<span class="legal"><strong>Payment has been confirmed</strong> You are expected to keep this receipt for your clearance. 
+									</span>
+								</div>
+			
+							</div><!--End InvoiceBot-->
+			  </div><!--End Invoice-->
+
+				 <button style="text-align: center;" id="doPrint">Print</button>
+				<a style="text-decoration:none;" href={% url 'transactions' %} onclick="document.getElementById('id01').style.display='none'" class="bbb">cancel</a>
+				<br><br>
+			  </div>
+		  </div>
+		</div>
+	</div>
+	<script>
+		document.getElementById("doPrint").addEventListener("click", function(){
+		  var printContents = document.getElementById('printDiv').innerHTML;
+		  var originalContents = document.body.innerHTML;
+		  document.body.innerHTML=printContents;
+		  window.print();
+		  document.body.innerHTML = originalContents;
+		});
+	
+	</script> 
+
+{% endblock content %}

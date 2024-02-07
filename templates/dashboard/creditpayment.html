@@ -1,0 +1,65 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Credit Student Account</h1>
+</div>
+ 
+<div class="container">
+  
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-5 d-noned-lg-block "><br><br><br><br><br><br><center><i class="fa fa-credit-card fa-10x"></i></center></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Credit Student Account</h1>
+                        </div>
+<form method="POST" class="user">
+    {% csrf_token %}
+    <div class="form-group">
+            {% render_field form.studentID class="form-control" style="height:50px; border-radius:50px;"  %}
+           
+        </div>
+    <div class="form-group">
+        {% render_field form.schoollevyID|attr:'required:true' class="form-control" style="height:50px; border-radius:50px;"   %}
+  
+      </div>
+    <div class="form-group">
+      {% render_field form.credit|attr:'required:true' type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="Debit Amount"   %}
+
+    </div>
+    <div class="form-group">
+      {% render_field form.descrip|attr:'required:true' type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Description"  %}
+
+  </div>
+  
+    <div class="form-group row" style="display:none;">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {% render_field form.departmentID class="form-control" style="height:50px; border-radius:50px;"  %}
+  
+            {% render_field form.user type="hidden" class="form-control" style="height:50px; border-radius:50px;"   %}
+        </div>
+    </div>  
+   
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        Credit Account
+    </button>
+    <hr>
+  </form>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock content %}

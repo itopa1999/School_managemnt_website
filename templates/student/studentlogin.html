@@ -1,0 +1,69 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student login</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentlogin.css' %}">
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent" style="margin-top:15px; height:auto; width:auto;">      
+          <!-- Icon -->
+          <br><br>
+          <div class="fadeIn first">
+            <i class='fa fa-user' style="font-size:60px; color:#a1a1a1;"></i>
+            <br><br>
+            <b style="color:#92badd; font-size:30px;">HELLO STUDENT</b>
+          </div>
+      <br>
+          <!-- Login Form -->
+          <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="dep" placeholder="Department" required>
+            <input type="text" name="userid" id="login" placeholder="Maric No" required>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required><br>
+            <p id="text" style="display:none; color:red;"><b>Caps lock is ON.</b></p>
+            <div class="show"><input type="checkbox" style="align-items:left;"  onclick="myFunction()">Show Password<br></div>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            {% for message in messages %}
+            <b style="color:red;">{{message}}</b><br><br>
+            {% endfor %}
+            <a class="underlineHover" href="{% url 'reset_password' %}">Forgot Password?</a>   
+          </div>
+      
+        </div>
+      </div>
+      <script>
+          function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        var input = document.getElementById("password");
+var text = document.getElementById("text");
+input.addEventListener("keyup", function(event) {
+
+if (event.getModifierState("CapsLock")) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none"
+  }
+});
+
+      </script>  
+  </body>
+  </html>

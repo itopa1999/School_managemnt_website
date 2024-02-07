@@ -1,0 +1,44 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Faculty</h1>
+</div>
+{% if fac %}
+<br><br>
+        <!-- Nested Row within Card Body -->
+        <div class="row" style="width:100%;" id="myDIV" >
+            {% for i in fac %}
+            <div class="col-xl-3 col-md-6 mb-4" id="myMenu">
+                <div class="card  shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-success h5 text-uppercase mb-1">
+                                    {{i.name}}</div>
+                                    <div class="p font-weight-bold text-gray-8000">HOF: {{i.name_of_Hof}}</div><br>
+                                <div class="p font-weight-bold text-gray-800"><a style="text-decoration:none;" href="{% url 'faculty' i.id%}"><i class="fa fa-angle-right"></i> view details</a></div>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% else %}
+        nothing here
+        {% endif %}
+
+{% endblock content %}

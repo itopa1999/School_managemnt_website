@@ -1,0 +1,186 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+    table{
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Timetable</h1>
+</div>
+
+<div class="card shadow mb-4 ">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-1">MONDAY</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table class="w-100">
+                <tr class="text-success h5">
+                    {% if tim %}
+                    <th>Course Name</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Department</th>
+                </tr>
+                {% for i in tim %}
+                <tr class="text-gray-800 font-weight-bold">
+                    <td>{{i.course}}</td>
+                    <td>{{i.timefrom}}</td>
+                    <td>{{i.timeto}}</td>
+                    <td>{{i.department}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                No course available for this day
+                {% endif %}
+            </table>
+
+    </div>
+</div>
+</div>
+
+    <div class="card shadow mb-4 ">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-1">TUESDAY</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table class="w-100">
+                <tr class="text-success h5">
+                    {% if tim1 %}
+                    <th>Course Name</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Department</th>
+                </tr>
+                {% for i in tim1 %}
+                <tr class="text-gray-800 font-weight-bold">
+                    <td>{{i.course}}</td>
+                    <td>{{i.timefrom}}</td>
+                    <td>{{i.timeto}}</td>
+                    <td>{{i.department}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                No course available for this day
+                {% endif %}
+            </table>
+
+    </div>
+</div>
+</div>
+
+<div class="card shadow mb-4 ">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-1">WEDNESDAY</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table class="w-100">
+                <tr class="text-success h5">
+                    {% if tim2 %}
+                    <th>Course Name</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Department</th>
+                </tr>
+                {% for i in tim2 %}
+                <tr class="text-gray-800 font-weight-bold">
+                    <td>{{i.course}}</td>
+                    <td>{{i.timefrom}}</td>
+                    <td>{{i.timeto}}</td>
+                    <td>{{i.department}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                No course available for this day
+                {% endif %}
+            </table>
+
+    </div>
+</div>
+</div>
+
+<div class="card shadow mb-4 ">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-1">THURSDAY</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table class="w-100">
+                <tr class="text-success h5">
+                    {% if tim3 %}
+                    <th>Course Name</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Department</th>
+                </tr>
+                {% for i in tim3 %}
+                <tr class="text-gray-800 font-weight-bold">
+                    <td>{{i.course}}</td>
+                    <td>{{i.timefrom}}</td>
+                    <td>{{i.timeto}}</td>
+                    <td>{{i.department}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                No course available for this day
+                {% endif %}
+            </table>
+
+    </div>
+</div>
+</div>
+
+<div class="card shadow mb-4 ">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-1">FRIDAY</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table class="w-100">
+                <tr class="text-success h5">
+                    {% if tim4 %}
+                    <th>Course Name</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Department</th>
+                </tr>
+                {% for i in tim4 %}
+                <tr class="text-gray-800 font-weight-bold">
+                    <td>{{i.course}}</td>
+                    <td>{{i.timefrom}}</td>
+                    <td>{{i.timeto}}</td>
+                    <td>{{i.department}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                No course available for this day
+                {% endif %}
+            </table>
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock content %}
+

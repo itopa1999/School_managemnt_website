@@ -1,0 +1,79 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Update Student </h1>
+</div>
+
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+              
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Update Student</h1>
+                      </div>
+                      <form method="POST" enctype="multipart/form-data" class="user">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                          {% render_field form.name|attr:'required:true' maxlength="20" type="text" class="form-control form-control-user" %}
+                            </div>
+                            <div class="col-sm-6">
+                              {% render_field form.matric_no|attr:'required:true' maxlength="22" type="text" class="form-control form-control-user" %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          {% render_field form.email  class="form-control" style="height:50px; border-radius:50px;"  %}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                          {% render_field form.phone_no class="form-control " style="height:50px; border-radius:50px;"  %}
+                            </div>
+                            <div class="col-sm-6">
+                              {% render_field form.level|attr:'required:true' type="text" class="form-control" style="height:50px; border-radius:50px;" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                        {% render_field form.program class="form-control " style="height:50px; border-radius:50px;"  %}
+                          </div>
+                          <div class="col-sm-6">
+                            {% render_field form.adm_year|attr:'required:true' type="text" class="form-control form-control-user" %}
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                      {% render_field form.faculty class="form-control " style="height:50px; border-radius:50px;"  %}
+                        </div>
+                        <div class="col-sm-6">
+                          {% render_field form.department|attr:'required:true' type="text" class="form-control form-control-user" %}
+                        </div>
+                    </div>
+                        
+                        <div class="form-group">
+                            {% render_field form.profile_pic  class="form-control"   %}
+                          </div>
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                              Update
+                          </button>
+                 </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,97 @@
+{% load static %}
+<style>
+    body {
+        margin:0;
+    }
+.navbar {
+        position: relative;
+        overflow: hidden;
+        background-color: rgb(229, 229, 238);
+        top: 0;
+        width: 100%;
+        border: 2px solid rgb(19, 22, 197);
+        position: fixed;
+        box-shadow: 0 1px 1px 0 #0e1c6d,0 17px 50px 0 #0e1c6d;
+        height: 60px;
+        
+    }
+
+.navbar a {
+        float: left;
+        padding: 8px;
+        margin-top: -15px;
+    }
+
+#date{
+        float: right;
+        text-align: right;
+        padding-right: 15px;
+        font-weight:bolder;
+        color: rgb(4, 4, 49);
+        margin-bottom: -2px;
+    }      
+
+#note{
+        text-align: center;
+        font-weight:bolder;
+        color: rgb(4, 4, 49);
+        margin-top: -2px;
+        margin-bottom: -2px;
+        top: 50%;
+        left: 58%;
+        float: right;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+
+#wlc{
+    font-size: 20px;
+    margin-bottom: -2px;
+    font-size: 20px;
+    color: rgb(4, 4, 49);
+    float: left;
+    
+}
+
+</style>
+<div class="navbar">
+    <a href="{% url 'dashboard' %}"><img border="0" alt="logo" src="{% static '/images/icon.png' %}" width="80" height="80"></a>
+    <p id="wlc"></p>
+    <p id="note"></p>
+    <p id="date"></p>
+</div>
+<script>
+var d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+
+
+var i = 0;
+var txt = 'FOR BETTER EXPERIENCE PLEASE PRESS F11. THANKS!!!. coded by lucky' ;
+var speed = 150;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("note").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+
+var myDate = new Date();
+    var hrs = myDate.getHours();
+
+    var greet;
+
+    if (hrs < 12)
+        greet = 'Good Morning';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good Afternoon';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good Evening';
+
+    document.getElementById('wlc').innerHTML =
+        '<b>' + greet + ', {{request.user.first_name}}</b>';
+
+</script>
+</body>

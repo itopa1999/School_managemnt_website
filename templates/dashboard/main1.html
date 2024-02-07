@@ -1,0 +1,663 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}" rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    
+<style>
+ 
+
+    .alert{
+        position:fixed;
+        right: 0;
+        top:1;
+height: fit-content;
+    }
+.progress-container1 {
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    height: 8px;
+    background: none;
+  }
+  
+  .progress-bar1 {
+    height: 5px;
+    background-color: rgba(0, 0, 255, 0.589);
+    width: 0%;
+  }
+  
+.icon-bar {
+    position: fixed;
+    top: 70%;
+    right:0;
+    margin:10px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    padding: 5px;
+    transition: all 0.3s ease;
+  }
+  @media only screen and (max-width: 600px) {
+    .slim{
+        margin: -30px;
+        margin-right: -37px;
+    }
+      }
+      </style>
+</head>
+
+<body id="page-top" onload="message()" >
+    
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard' %}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    
+                </div>
+                <div class="sidebar-brand-text mx-3">ADMIN PORTAL</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'dashboard' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Faculty/Department
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-building"></i>
+                    <span>Faculty</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h3 class="collapse-header">Faculty Links:</h3>
+                        <a class="collapse-item" href="{% url 'newfaculty' %}">Add New Faculty</a>
+                        <a class="collapse-item" href="{% url 'viewfaculty' %}">View Faculty</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fa fa-hotel"></i>
+                    <span>Department</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Department Links:</h6>
+                        <a class="collapse-item" href="{% url 'newdepartment' %}">Add New Department</a>
+                        <a class="collapse-item" href="{% url 'viewdepartment' %}">View Department</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Lecturer/Student
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Lecturer</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Lecturer Links</h6>
+                        <a class="collapse-item" href="{% url 'alllecturers' %}">View Lecturer</a>
+                        <a class="collapse-item" href="{% url 'lecturerview' %}">Lecturer Results submitted</a>
+                        <a class="collapse-item" href="{% url 'attendance' %}">Lecturer Attendance</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
+                    aria-expanded="true" aria-controls="collapsePages1">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Student</span>
+                </a>
+                <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Student Links</h6>
+                        <a class="collapse-item" href="{% url 'allstudents' %}">View Student</a>
+                        <a class="collapse-item" href="{% url 'studentmark' %}">Student Exam Mark</a>
+                        <a class="collapse-item" href="{% url 'result' %}" >Add Student Result</a>
+                        <a class="collapse-item" href="{% url 'viewresult' %}" >View Student Results</a> 
+                        <a class="collapse-item" href="{% url 'regstucourse' %}" >Register Course</a>               
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Examination/Questions
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                    aria-expanded="true" aria-controls="collapsePages2">
+                    <i class="fa fa-sticky-note"></i>
+                    <span>Examination</span>
+                </a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Exam Links</h6>
+                        <a class="collapse-item" href="{% url 'addquestion' %}">Add Exam Question</a>
+                        <a class="collapse-item" href="{% url 'viewquestion' %}">View Exam Question</a>                      
+                    </div>
+                </div>
+            </li>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider">
+
+                        <!-- Heading -->
+                        <div class="sidebar-heading">
+                            Registration
+                        </div>
+            
+                        <!-- Nav Item - Pages Collapse Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+                                aria-expanded="true" aria-controls="collapsePages3">
+                                <i class="fa fa-user-plus"></i>
+                                <span>Registration</span>
+                            </a>
+                            <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Register Links</h6>
+                                    <a class="collapse-item" href="{% url 'registersuperadmin' %}">Register Super admin</a>
+                                    <a class="collapse-item" href="{% url 'registeradmin' %}">Register Admin</a>
+                                    <a class="collapse-item" href="{% url 'registerregistry' %}">Register Registry</a>
+                                    <a class="collapse-item" href="{% url 'registerbursary' %}">Register Bursary</a>
+                                    <a class="collapse-item" href="{% url 'registerhod' %}">Register HOD</a>
+                                    <a class="collapse-item" href="{% url 'registerlibrary' %}">Register Libarian</a>
+                                    <a class="collapse-item" href="{% url 'registersupervisor' %}">Register Supervisor</a>
+                                    <a class="collapse-item" href="{% url 'registerlecturer' %}">Register Lecturer</a>
+                                    <a class="collapse-item" href="{% url 'registerstudent' %}">Register Student</a>
+                                </div>
+                            </div>
+                        </li>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
+                    aria-expanded="true" aria-controls="collapsePages4">
+                    <i class="fa fa-book"></i>
+                    <span>Course</span>
+                </a>
+                <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Course Links</h6>
+                        <a class="collapse-item" href="{% url 'newcourse' %}">Add Course</a>
+                        <a class="collapse-item" href="{% url 'adminviewcourse' %}">View Course</a>                      
+                    </div>
+                </div>
+            </li>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Library
+</div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages6"
+                    aria-expanded="true" aria-controls="collapsePages6">
+                    <i class="fa fa-university"></i>
+                    <span>Library</span>
+                </a>
+                <div id="collapsePages6" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Library Links</h6>
+                        <a class="collapse-item" href="{% url 'viewbook' %}">Library Books</a>
+                        <a class="collapse-item" href="{% url 'studentlib' %}">Library Student</a>
+                        <a class="collapse-item" href="{% url 'issuedlibook' %}">Issued books to student</a>                   
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Supervisor
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages10"
+                    aria-expanded="true" aria-controls="collapsePages10">
+                    <i class="fa fa-tasks"></i>
+                    <span>Supervisor</span>
+                </a>
+                <div id="collapsePages10" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Supervisor Links</h6>
+                        <a class="collapse-item" href="{% url 'examrecord' %}">Examination Records</a>
+                        <a class="collapse-item" href="{% url 'malpracticeview' %}">malpractice Records</a>
+                                           
+                    </div>
+                </div>
+            </li>
+
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                        <!-- Heading -->
+                        <div class="sidebar-heading">
+                            Transaction
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages11"
+                                aria-expanded="true" aria-controls="collapsePages11">
+                                <i class="fa fa-credit-card"></i>
+                                <span>Transaction</span>
+                            </a>
+                            <div id="collapsePages11" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header"> Student Transactions</h6>
+                                    <a class="collapse-item" href="{% url 'transactions' %}">View Student Transactions</a>
+                                    <a class="collapse-item" href="{% url 'debitpayment' %}">Debit Payment</a>
+                                    <a class="collapse-item" href="{% url 'creditpayment' %}">Credit Payment</a>
+                                                       
+                                </div>
+                            </div>
+                        </li>
+
+            <!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    NoticeBoard/Message
+</div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages7"
+                    aria-expanded="true" aria-controls="collapsePages7">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span>NoticeBoard</span>
+                </a>
+                <div id="collapsePages7" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Noticeboard Links</h6>
+                        <a class="collapse-item" href="{% url 'newnotice' %}">Write a notice</a>
+                        <a class="collapse-item" href="{% url 'newnotice1' %}">Write Notice Department</a>
+                        <a class="collapse-item" href="{% url 'noticeboard' %}">Notice Board</a>                   
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages8"
+                    aria-expanded="true" aria-controls="collapsePages8">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Message</span>
+                </a>
+                <div id="collapsePages8" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Message Links</h6>
+                        <a class="collapse-item" href="{% url 'template' %}">New Message</a>
+                        <a class="collapse-item" href="{% url 'viewmessage' %}">Inbox Messages</a>
+                        <a class="collapse-item" href="{% url 'sentmessage' %}">Sent Messages</a> 
+                                           
+                    </div>
+                </div>
+            </li>
+
+            
+            <!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Tables
+</div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages12"
+                    aria-expanded="true" aria-controls="collapsePages12">
+                    <i class="fa fa-table"></i>
+                    <span>TimeTable/Exam Table</span>
+                </a>
+                <div id="collapsePages12" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tables Links</h6>
+                        <a class="collapse-item" href="{% url 'settimetable' %}">Set timetable</a>
+                        <a class="collapse-item" href="{% url 'setexamtable' %}">Set exam timetable</a>
+                        <a class="collapse-item" href="{% url 'adminexamtable' %}">Exam timetable</a> 
+                        <a class="collapse-item" href="{% url 'admintable' %}">Timetable</a> 
+                        <a class="collapse-item" href="{% url 'resettable' %}">Reset Table</a> 
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages5"
+                    aria-expanded="true" aria-controls="collapsePages5">
+                    <i class="fa fa-filter"></i>
+                    <span>Other Links</span>
+                </a>
+                <div id="collapsePages5" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Links</h6>
+                        <a class="collapse-item" href="{% url 'newstudentlevy' %}">Add Levy</a>
+                        <a class="collapse-item" href="{% url 'access' %}">Authorisation and Access</a>
+                        <a class="collapse-item" href="{% url 'changegroup' %}">All Staff Info</a> 
+                        <a class="collapse-item" href="{% url 'uploadfile' %}">Upload Student Files</a>
+                        <a class="collapse-item" href="{% url 'addpayroll' %}">Add Payroll</a>
+                        <a class="collapse-item" href="{% url 'payroll' %}">Payroll</a> 
+                        <a class="collapse-item" href="{% url 'viewstatus' %}">View Status</a> 
+                        <a class="collapse-item" href="{% url 'status' %}">Status</a> 
+                        <a class="collapse-item" href="{% url 'stucourse' %}">Student Course</a> 
+                        <a class="collapse-item" href="{% url 'addcalendar' %}">Add Calendar Event</a> 
+                        <a class="collapse-item" href="{% url 'calendar' %}">Calendar</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" id="sticky">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <div
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2" id="myInput" onkeyup="myFunction()">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <div id="alertsDropdown" 
+                                 aria-haspopup="true" aria-expanded="false">
+                                <p class="mt-4" id="date"></p>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user.first_name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{request.user.profile_pic.url}}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{% url 'adminprofile' %}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{% url 'changepassword' %}">
+                                    <i class="fa fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Change Password
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <a class="dropdown-item" href="{% url 'viewstatus' %}">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    View Status
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <div class="progress-container1">
+                    <div class="progress-bar1" id="myBar"></div>
+                  </div>
+                <!-- End of Topbar -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+    </a>
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+
+   <!-- <div class="icon-bar">
+        <a href="#"><i class="fa fa-home" style="color:red;"></i></a> 
+        <a href="#"><i class="fa fa-car" style="color:red;"></i></a> 
+        <a href="#"><i class="fa fa-car" style="color:red;"></i></a> 
+      </div> -->
+      {% include 'dashboard/msg.html' %}     
+      <div id="myDIV" >
+          <div class="slim">  
+          {% block content %}
+          
+          
+               
+          {% endblock content %}
+          </div>
+      </div>
+
+      
+                   <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js1/sb-admin-2.min.js' %}"></script>
+
+    
+    <!-- Page level plugins -->
+    <script src="{% static '/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static '/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js1/demo/datatables-demo.js' %}"></script>
+
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+
+        
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {myFunction()};
+    
+    function myFunction() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+
+var d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+
+
+    </script>
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myDIV *").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+
+
+        $(document).ready(function(){
+  
+            $(".dateinput").datepicker({changeYear: true,changeMonth: true});
+           
+           
+          });
+        
+        </script>
+        <script>
+            var myDate = new Date();
+            var hrs = myDate.getHours();
+        
+            var greet;
+        
+            if (hrs < 12)
+                greet = 'Good Morning';
+            else if (hrs >= 12 && hrs <= 17)
+                greet = 'Good Afternoon';
+            else if (hrs >= 17 && hrs <= 24)
+                greet = 'Good Evening';
+        
+            document.getElementById('wlc').innerHTML =
+                '<b>' + greet + ', {{request.user.first_name}}</b>';
+            </script>
+</body>
+
+</html>

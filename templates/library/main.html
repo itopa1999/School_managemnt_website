@@ -1,0 +1,433 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Ajayi Portal</title>
+
+    <!-- Custom fonts for this template-->
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}" rel="stylesheet">
+        <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+<style>
+    .alert{
+        position:fixed;
+        right: 0;
+        top:1;
+height: fit-content;
+    }
+.progress-container1 {
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    height: 8px;
+    background: none;
+  }
+  
+  .progress-bar1 {
+    height: 5px;
+    background-color: rgba(0, 0, 255, 0.589);
+    width: 0%;
+  }
+  
+.icon-bar {
+    position: fixed;
+    top: 70%;
+    right:0;
+    margin:10px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    padding: 5px;
+    transition: all 0.3s ease;
+  }
+  @media only screen and (max-width: 600px) {
+    .slim{
+        margin: -30px;
+        margin-right: -37px;
+    }
+      } 
+      </style>
+</head>
+
+<body id="page-top" onload="message()">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'librarydashboard' %}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    
+                </div>
+                <div class="sidebar-brand-text mx-3">LIBRARY PORTAL</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'librarydashboard' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'viewstudent' %}">
+                <i class="fas fa-user-graduate"></i>
+                <span>View Student</span></a>
+        </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'addbook' %}">
+                  <i class="fas fa-plus"></i>
+                  <span>Add Book</span></a>
+          </li>
+              <!-- Divider -->
+              <hr class="sidebar-divider d-none d-md-block">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'libviewbook' %}">
+                    <i class="fas fa-book"></i>
+                    <span>View library Books</span></a>
+            </li>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider d-none d-md-block">
+
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'issuebook' %}">
+                   <i class="fas fa-user-plus"></i>
+                   <span>Issue Book to Student</span></a>
+           </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'viewissuedbook' %}">
+                  <i class="fas fa-eye"></i>
+                  <span>View Issued Books</span></a>
+          </li>
+          
+          
+
+            <!-- Divider -->
+          <hr class="sidebar-divider d-none d-md-block">
+          <!-- Heading -->
+          <div class="sidebar-heading">
+              NoticeBoard/Message
+          </div>
+        <li class="nav-item">
+              <a class="nav-link" href="{% url 'libnoticeboard' %}">
+                <i class="fa fa-exclamation-circle"></i>
+                  <span>Notice Board</span></a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages8"
+                    aria-expanded="true" aria-controls="collapsePages8">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Message</span>
+                </a>
+                <div id="collapsePages8" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Message Links</h6>
+                        <a class="collapse-item" href="{% url 'libnewmessage' %}">New Message</a>
+                        <a class="collapse-item" href="{% url 'libviewmessage' %}">Inbox Messages</a>
+                        <a class="collapse-item" href="{% url 'libsentmessage' %}">Sent Messages</a> 
+                                           
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages5"
+                    aria-expanded="true" aria-controls="collapsePages5">
+                    <i class="fa fa-filter"></i>
+                    <span>Other Links</span>
+                </a>
+                <div id="collapsePages5" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Links</h6>
+                        <a class="collapse-item" href="{% url 'libtable' %}">Timetable</a> 
+                        <a class="collapse-item" href="{% url 'libexamtable' %}">Exam Timetable</a>
+                        <a class="collapse-item" href="{% url 'libstatus' %}">Status</a> 
+                        <a class="collapse-item" href="{% url 'libCalendarView' %}">Calendar</a> 
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" id="sticky">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <div
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2" id="myInput" onkeyup="myFunction()">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <div id="alertsDropdown" 
+                                 aria-haspopup="true" aria-expanded="false">
+                                <p class="mt-4" id="date"></p>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user.first_name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{request.user.profile_pic.url}}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{% url 'libviewprofile' %}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{% url 'libviewstatus' %}">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    View Status
+                                </a>
+                                <a class="dropdown-item" href="{% url 'libchangepassword' %}">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Change Password
+                                </a>
+                               
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <div class="progress-container1">
+                    <div class="progress-bar1" id="myBar"></div>
+                  </div>
+                <!-- End of Topbar -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+    </a>
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+
+   <!-- <div class="icon-bar">
+        <a href="#"><i class="fa fa-home" style="color:red;"></i></a> 
+        <a href="#"><i class="fa fa-car" style="color:red;"></i></a> 
+        <a href="#"><i class="fa fa-car" style="color:red;"></i></a> 
+      </div> -->
+      {% include 'dashboard/msg.html' %}     
+      <div id="myDIV" >
+          <div class="slim">  
+          {% block content %}
+          
+          
+               
+          {% endblock content %}
+          </div>
+      </div>
+                   <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js1/sb-admin-2.min.js' %}"></script>
+
+    
+    
+    <!-- Page level plugins -->
+    <script src="{% static '/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static '/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js1/demo/datatables-demo.js' %}"></script>
+
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 4000);
+
+        
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {myFunction()};
+    
+    function myFunction() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+    
+    
+
+    var d = new Date();
+    document.getElementById("date").innerHTML = d.toDateString();
+    
+    
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myDIV *").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+        </script>
+        <script>
+            var myDate = new Date();
+            var hrs = myDate.getHours();
+        
+            var greet;
+        
+            if (hrs < 12)
+                greet = 'Good Morning';
+            else if (hrs >= 12 && hrs <= 17)
+                greet = 'Good Afternoon';
+            else if (hrs >= 17 && hrs <= 24)
+                greet = 'Good Evening';
+        
+            document.getElementById('wlc').innerHTML =
+                '<b>' + greet + ', {{request.user.first_name}}</b>';
+            </script>
+</body>
+
+</html>

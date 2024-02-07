@@ -1,0 +1,54 @@
+{% extends 'lecturer/main.html' %}
+
+{% block content %}
+
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Student mark</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> Course list</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                      <tr>
+  
+                                        <th>(Course code)Course Name</th>
+                                        <th>Exam Score</th>
+                                        <th>Total Exam Score</th>
+                                        <th>Number of Attempts</th>
+                                        <th>Exam Date</th>
+                                      </tr>
+                                    </thead> 
+                                  </tbody>              
+                                    {% for res in res %}
+                                    <td>{{res.course}}</td>
+                                    <td>{{res.marks}}</td>
+                                    <td>{{total_marks}}</td>
+                                    <td>Attempt {{ forloop.counter }}</td>
+                                    <td>{{res.date}}</td>
+                                     </tr>
+                                     {% endfor %}                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+
+{% endblock content %}
+

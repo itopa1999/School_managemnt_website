@@ -1,0 +1,60 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Add Payroll </h1>
+</div>
+
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-5 d-noned-lg-block "><br><br><br><br><br><br><center><i class="fa fa-credit-card fa-10x"></i></center></div>
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Add Staff To Payroll</h1>
+                      </div>
+                      <form method="POST" class="user">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            {% render_field form.staff|attr:'required:true' type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder=" Staff Name"  %}
+                              </div>
+                              <div class="form-group">
+                                {% render_field form.salary|attr:'required:true' type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="Salary" %}
+                              </div>
+                          
+                          <div class="form-group">
+                            {% render_field form.vat|attr:'required:true' type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="VAT" %}
+
+                          </div>
+                          <div class="form-group">
+                            {% render_field form.pension|attr:'required:true' type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="Pension"  %}
+
+                        </div>
+                        
+                        
+                         
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                              Add
+                          </button>
+                          <hr>
+                        </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+{% endblock content %}

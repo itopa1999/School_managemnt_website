@@ -1,0 +1,74 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+<style>
+
+</style>
+
+<div class="container-fluid">
+    <!-- Info Alert -->
+   
+   
+   <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+       <h1 class=" dark h3 mb-0 text-gray" >Result</h1>
+   </div>
+
+   <div class="card shadow mb-4">
+    <div class="card-header py-3">
+       
+        <h6 class="m-0 font-weight-bold h5 text-primary">Result</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead style="color:rgba(37, 35, 35, 0.596)">
+                    <th>{{t}} | Grade</th>
+                        <th >{{t1}} | Grade</th>
+                        <th >{{t2}} | Grade</th>
+                        <th >{{t3}} | Grade</th>
+                </thead>
+                                                
+                
+                <tbody class="m-0 font-weight-bold h5 text-primary">
+                    <td>{{gpa}} | {{gra}}</td>
+                        <td >{{gpa1}} | {{gra1}}</td>
+                        <td>{{gpa2}} | {{gra2}}</td>
+                        <td>{{gpa3}} | {{gra3}}</td>
+                </tbody>
+                
+            </table>                              
+        </div>
+    </div>
+</div>
+
+
+
+<br><br>
+
+   <div class="card shadow mb-4">
+    <div class="card-header py-3">
+       
+        <h6 class="m-0 font-weight-bold h5 text-primary">Result Summary</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead style="color:rgba(37, 35, 35, 0.596)">
+                    <th>{{tit}} Semester | Grade</th>
+                        <th >{{tit1}} Semester | Grade</th>
+                        <th > CGPA | Grade</th>
+                </thead>
+                                                
+                
+                <tbody class="m-0 font-weight-bold h5 text-primary">
+                    <td>{{cgpa}} | {{grade}}</td>
+                        <td >{{cgpa1}} | {{grade1}}</td>
+                        <td>{{cgpa2}} | {{grade2}}</td>
+                </tbody>
+                
+            </table>                              
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

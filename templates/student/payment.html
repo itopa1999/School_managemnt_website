@@ -1,0 +1,30 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+<style> 
+  select {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 4px;
+      background-color: #f1f1f1;
+  }
+  </style>
+
+<div class=" dark d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class=" dark h3 mb-0 text-gray-800" > Transaction Summary</h1>
+</div>
+
+<form method="POST">
+  <select name="levies" class='border-info'>
+    <option>choose levy</option>
+    {% for i in sch %}<option >{{i.name}}</option>{% endfor %}
+    
+  </select>
+
+  <input class="btn mt-3 btn-primary" type="submit">
+</form>
+
+  
+{% endblock content %}
+
+   

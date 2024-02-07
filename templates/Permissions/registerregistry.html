@@ -1,0 +1,115 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+{% for m in messages %}
+ <div class="alert text-primary shadow h-20 py-2 border-left-primary bg-white alert-dismissible fade show">
+    <i class="bi-info-circle-fill"></i> 
+  <strong class="mx-2">{{m}}</strong>
+</div>
+{% endfor %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Register Registry</h1>
+</div>
+
+ 
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-5 d-noned-lg-block "><br><br><br><br><br><br><br><br><br><br><br><center><i class="fa fa-user-plus fa-10x"></i></center></div>
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                      </div>
+                      <form method="POST" class="user">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                          {% render_field form.first_name|attr:'required:true' maxlength="20" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Staff Name" %}
+                            </div>
+                            <div class="col-sm-6">
+                              {% render_field form.userid|attr:'required:true' maxlength="11" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Staff ID" %}
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                        {% render_field form.email|attr:'required:true' type="email" class="form-control form-control-user" id="exampleFirstName"  placeholder="Email Address" %}
+                          </div>
+                          <div class="col-sm-6">
+                            {% render_field form.phone|attr:'required:true' type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="Phone Number" %}
+                        </div>
+                      </div>
+                        <div class="form-group">
+                          {% render_field form.dep|attr:'required:true' maxlength="3" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Example: com" %}
+                        </div>
+                        <div class="form-group">
+                          {% render_field form.department|attr:'required:true' maxlength="15" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Department" %}
+                        </div>
+                        <div class="form-group">
+                          {% render_field form.position|attr:'required:true' maxlength="15" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Position" %}
+                        </div>
+                        
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                        {% render_field form.nationality type="text" maxlength="15" class="form-control form-control-user" id="exampleFirstName"  placeholder="Nationality" %}
+                          </div>
+                          <div class="col-sm-6">
+                            {% render_field form.state_of_origin type="text" maxlength="15" class="form-control form-control-user" id="exampleFirstName"  placeholder="State of origin" %}
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                        {% render_field form.account_no type="number" class="form-control form-control-user" id="exampleFirstName"  placeholder="Account Number" %}
+                          </div>
+                          <div class="col-sm-6">
+                            {% render_field form.account_bank maxlength="10" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Account Name" %}
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        {% render_field form.address type="text" maxlength="20" class="form-control form-control-user" id="exampleFirstName"  placeholder="Address" %}
+                      </div>
+                      <div class="form-group">
+                          {% render_field form.local_government type="text" maxlength="20" class="form-control form-control-user" id="exampleFirstName"  placeholder="Local Government" %}
+                        </div>
+                      <div class="form-group">
+                          {% render_field form.qualification type="text" maxlength="30" class="form-control form-control-user" id="exampleFirstName"  placeholder="Qualification" %}
+                        </div>
+                        <div class="form-group">
+                          {% render_field form.profile_pic class="form-control" %}
+                          <label>Profile Picture</label>
+                        </div>
+                      <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                                  {% render_field form.password1|attr:'required:true' min="8" max="20" type="password" class="form-control form-control-user" id="exampleInputPassword"  placeholder="Password" %}
+                          </div>
+                          <div class="col-sm-6">
+                                  {% render_field form.password2|attr:'required:true' min="8" max="20" type="password" class="form-control form-control-user" id="exampleRepeatPassword"  placeholder="Confirm Password" %}
+
+                          </div>
+                      </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Register Account
+                        </button>
+                        <hr>
+                      </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock content %}

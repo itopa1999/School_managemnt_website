@@ -1,0 +1,57 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+  
+      h6 {
+        text-align: center;
+      }
+  
+      .row {
+        margin: 100px;
+      }
+    </style>
+  </head>
+
+<div class=" dark d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class=" dark h3 mb-0 text-gray-800" >Score</h1>
+</div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <th>(Course code)Course Name</th>
+                  <th>Exam Score</th>
+                  <th>Total Exam Score</th>
+                  <th>Number of Attempts</th>
+                  <th>Exam Date</th>
+                    
+                </thead> 
+                                   
+                <tbody>
+                  {% for t in results %}
+                  <tr>
+            
+                    <td>{{t.course}}</td>
+                      <td>{{t.marks}}</td>
+                      <td>{{total_marks}}</td>
+                      <td>Attempt {{ forloop.counter }}</td>
+                      <td>{{t.date}}</td>
+                    
+                    {% endfor %}
+                  </tr>        
+      </table>
+    </div>
+  </div>
+  {% endblock content %}

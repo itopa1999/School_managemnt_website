@@ -1,0 +1,56 @@
+{% if messages %}
+{% for m in messages %}
+{% if m.tags == 'error' %}
+<script>
+    function message(){
+        Swal.fire({
+            title: '<strong>{{m}}!</strong>',
+            icon: 'error',
+            iconColor:'aaa',
+            width: 400,
+            showConfirmButton:false,
+            allowOutsideClick:true,
+            scrollbarPadding:false,
+            showCloseButton: true,
+          })
+          
+    }
+{% endif %}
+  </script>
+  {% if m.tags == 'success' %}
+  <script>
+      function message(){
+          Swal.fire({
+              title: '<strong>{{m}}!</strong>',
+              icon: 'success',
+              iconColor:'aaa',
+              width: 400,
+              showConfirmButton:false,
+              allowOutsideClick:true,
+              scrollbarPadding:false,
+              showCloseButton: true,
+            })
+            
+      }
+  {% endif %}
+    </script>
+
+{% if m.tags == 'info' %}
+<script>
+    function message(){
+        Swal.fire({
+            title: '<strong>{{m}}!</strong>',
+            icon: 'info',
+            iconColor:'aaa',
+            width: 400,
+            showConfirmButton:false,
+            allowOutsideClick:false,
+            scrollbarPadding:false,
+            showCloseButton: true,
+          })
+          
+    }
+{% endif %}
+  </script>
+  {% endfor %}
+  {% endif %}

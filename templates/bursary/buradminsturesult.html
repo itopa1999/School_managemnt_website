@@ -1,0 +1,224 @@
+{% extends 'bursary/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Course</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> {{tit}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res %}   
+                                        <th>(Course code)Course Name</th>
+                                            <th >Course Unit</th>
+                                            <th >Exam Score</th>
+                                            <th >Test Score</th>
+                                            <th >Attendant Score</th>
+                                            <th >Grade</th>
+                                            <th >Quality Point</th>                   
+                                        </tr>
+                                    </thead> 
+                                                     
+                                    {% for res in res %}
+                                    <tbody>
+                                        <td>{{res.course}}</td>
+                                            <td >{{res.cu}}</td>
+                                            <td>{{res.exam_score}}</td>
+                                            <td>{{res.test_score}}</td>
+                                            <td>{{res.attendant_score}}</td>
+                                            <td>{{res.grade}}</td>
+                                            <td>{{res.qp}}</td>
+                                            {% endfor %}
+                                   
+                                            
+                                    </tr>
+                                    <td>GPA</td>  
+                                    <td>{{gpa}}</td>
+                                    <td>{{grade}}</td>
+                                    
+                                    {% else %}
+                                    no data available to View for {{tit}}
+                                    {% endif %}                                          
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow mb-4">
+                        
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> {{tit1}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res1 %}
+                                        <th>(Course code)Course Name</th>
+                                            <th >Course Unit</th>
+                                            <th >Exam Score</th>
+                                            <th >Test Score</th>
+                                            <th >Attendant Score</th>
+                                            <th >Grade</th>
+                                            <th >Quality Point</th> 
+                                    </thead>
+                                                              
+                                    {% for res in res1 %}
+                                    <tbody>
+                                        <td>{{res.course}}</td>
+                                            <td >{{res.cu}}</td>
+                                            <td>{{res.exam_score}}</td>
+                                            <td>{{res.test_score}}</td>
+                                            <td>{{res.attendant_score}}</td>
+                                            <td>{{res.grade}}</td>
+                                            <td>{{res.qp}}</td>
+                                            {% endfor %}
+                                    </tr>
+                                        
+                                    <td>GPA</td>  
+                                    <td>{{gpa1}}</td>
+                                    <td>{{grade1}}</td>
+                                    </tbody>
+                                    
+                                        {% else %}
+                                        no data available to View for {{tit1}}
+                                        {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> {{tit2}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res2 %}
+                                        <th>(Course code)Course Name</th>
+                                            <th >Course Unit</th>
+                                            <th >Exam Score</th>
+                                            <th >Test Score</th>
+                                            <th >Attendant Score</th>
+                                            <th >Grade</th>
+                                            <th >Quality Point</th> 
+                                    </thead>
+                                                                    
+                                    {% for res in res2 %}
+                                    <tbody>
+                                        <td>{{res.course}}</td>
+                                            <td >{{res.cu}}</td>
+                                            <td>{{res.exam_score}}</td>
+                                            <td>{{res.test_score}}</td>
+                                            <td>{{res.attendant_score}}</td>
+                                            <td>{{res.grade}}</td>
+                                            <td>{{res.qp}}</td>
+                                            {% endfor %}
+                                    </tr>
+                                        
+                                    <td>GPA</td>  
+                                    <td>{{gpa2}}</td>
+                                    <td>{{grade2}}</td>
+                                    </tbody>
+                                    
+                                        {% else %}
+                                        no data available to View for {{tit2}}
+                                        {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                           
+                            <h6 class="m-0 font-weight-bold text-primary"> {{tit3}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res3 %}
+                                        <th>(Course code)Course Name</th>
+                                            <th >Course Unit</th>
+                                            <th >Exam Score</th>
+                                            <th >Test Score</th>
+                                            <th >Attendant Score</th>
+                                            <th >Grade</th>
+                                            <th >Quality Point</th> 
+                                    </thead>
+                                                                    
+                                    {% for res in res3 %}
+                                    <tbody>
+                                        <td>{{res.course}}</td>
+                                            <td >{{res.cu}}</td>
+                                            <td>{{res.exam_score}}</td>
+                                            <td>{{res.test_score}}</td>
+                                            <td>{{res.attendant_score}}</td>
+                                            <td>{{res.grade}}</td>
+                                            <td>{{res.qp}}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <td>GPA</td>  
+                                      <td>{{gpa3}}</td>
+                                      <td>{{grade3}}</td>
+
+                                        
+                                        {% else %}
+                                        no data available to View for {{tit3}}
+                                        {% endif %}
+                                        
+                                    </tbody>
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                           
+                            <h6 class="m-0 font-weight-bold text-primary">Result Summary</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <th>{{ti}} Semester</th>
+                                            <th >{{ti1}} Semester</th>
+                                            <th >ND CGPA</th>
+                                    </thead>
+                                                                    
+                                    
+                                    <tbody>
+                                        <td>{{cgpa}}</td>
+                                            <td >{{cgpa2}}</td>
+                                            <td>{{cgpa1}}</td>
+                                            
+                                        
+                                        
+                                    </tbody>
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                                              
+             
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+{% endblock content %}

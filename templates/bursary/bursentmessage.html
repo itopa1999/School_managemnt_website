@@ -1,0 +1,38 @@
+{% extends 'bursary/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+  .con{
+    word-wrap: break-word;
+    word-break: break-all;
+   }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Sent Messages</h1>
+</div>
+{% if meg %}
+            {% for i in meg %} 
+            <div class="card shadow col-md-8 card bg-info border-bottom-info">      
+            <div class=" m-2 d-flex align-items-center">
+              <div class="font-weight-bold mt-3">
+                <div class=" mr-3">
+                    <img  src="{{i.profile_pic.url}}"
+                        alt="..." height=50 width=50 class="rounded-circle small text-white">                                
+                        {{i.sender}} . {{i.date}} . {{i.lecturer}} . {{i.student}} . {{i.group}}</div> 
+                    <center><div class="text-white h4">{{i.subject}}</div></center>
+                  <div class=" con text-white">{{i.message}}<br><br></div>
+              </div>
+
+            </div>
+            <a class="align-items-right mb-2 justify-content-end" href="{% url 'burdeletemessage' i.id %}"><i class="fa fa-trash fa-2x" style="color:red;"></i></a>
+
+            </div>
+            {% endfor %}
+            {% else %}
+            nothing here
+            {% endif %}
+{% endblock content %}

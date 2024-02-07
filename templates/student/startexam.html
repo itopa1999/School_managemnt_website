@@ -1,0 +1,177 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+
+<style>
+  body{
+      background: #F4F7FD;
+      margin-top:20px;
+  }
+  
+  .card-margin {
+      margin-bottom: 1.875rem;
+  }
+  
+  .card {
+      border: 0;
+      box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+      -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  }
+  .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #ffffff;
+      background-clip: border-box;
+      border: 1px solid #e6e4e9;
+      border-radius: 8px;
+  }
+  
+  .card .card-header.no-border {
+      border: 0;
+  }
+  .card .card-header {
+      background: none;
+      padding: 0 0.9375rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      min-height: 50px;
+ 
+  .widget-49 .widget-49-meeting-points {
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: .5rem;
+  }
+
+  article .count {
+    padding: 5px;
+}
+article #timer{
+    padding: 5px;
+    color: red;
+    border-radius: 2px;
+    width: 100%;
+    font: normal bold 16px/normal tahoma;
+}
+  </style>
+  <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class=" dark h3 mb-0 text-gray" >Examination In progress</h1>
+</div>
+  <br><br>
+<div class="container">
+  <div class="jumbotron">
+  <div class="row">
+          <div class="card card-margin">
+                <h4 class="card-title text-danger"  style="margin:5px;">
+                  <article class="clock" id="model3">                 
+                    <div class="count">
+                      <div id="timer" style="text-align:right"></div>
+                    </div>
+                  </article>
+                </h4>
+                <form class="form" id="form1" autocomplete="off" onsubmit="return saveAns()"  action="{% url 'calculatemarks'%}" method="POST">
+                  {% csrf_token %}
+              <div class="card-body pt-0">
+                  <div class="widget-49">
+                      <div class="widget-49-title-wrapper">
+                          <div class="widget-49-meeting-info">
+                          <center><span class="widget-49-pro-title text-info"><h3>{{course.name}}</h3></span></center>
+                          {% for q in questions%}
+                          <h5 class="text-danger">{{ forloop.counter }}. {{q.question}}</h5>
+                          
+                              <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
+                                <div class="form-check mx-4">
+                                  <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1">
+                                  <label class="form-check-label" for="option1">
+                                    {{q.option1}}
+                                  </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                  <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2">
+                                  <label class="form-check-label" for="option2">
+                                    {{q.option2}}
+                                  </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                  <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3">
+                                  <label class="form-check-label" for="option3">
+                                    {{q.option3}}
+                                  </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                  <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4">
+                                  <label class="form-check-label" for="option4">
+                                    {{q.option4}}
+                                  </label>
+                                </div>
+                              {% endfor %}
+                              <br><br><br>
+                              <input onclick="SubmitForm()" class="btn btn-success btn-lg" style="border-radius: 0%;"  type="submit" value="Submit Answers">  
+                          </form>
+                        </div>
+                      </div>
+</div>
+  
+  <script> 
+      function saveAns(){  
+  
+          var ele = document.getElementsByTagName('input'); 
+          for(i = 0; i < ele.length; i++) { 
+              if(ele[i].type="radio") { 
+                  if(ele[i].checked){        
+                    setCookie(ele[i].name,ele[i].value,3)
+                  }
+              } 
+          } 
+            
+      }
+      
+      function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  
+
+
+  setTimeout("document.forms[\"form1\"].submit()", 5404000);
+
+
+
+  var sec         = 5400,
+  countDiv    = document.getElementById("timer"),
+  secpass,
+  countDown   = setInterval(function () {
+      'use strict';
+      
+      secpass();
+  }, 1000);
+
+function secpass() {
+  'use strict';
+  var min     = Math.floor(sec / 60),
+      remSec  = sec % 60;
+  if (remSec < 10) {
+      remSec = '0' + remSec;
+  }
+  if (min < 10) {
+      
+      min = '0' + min;
+  }
+  countDiv.innerHTML = min + ":" + remSec;
+  if (sec > 0) {  
+      sec = sec - 1;  
+  } else {  
+      clearInterval(countDown);
+      countDiv.innerHTML = 'countdown done';
+  }
+}
+
+  </script>   
+{% endblock content %}

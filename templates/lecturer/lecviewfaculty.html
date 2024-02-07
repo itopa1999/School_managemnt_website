@@ -1,0 +1,122 @@
+{% extends 'lecturer/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Faculty</h1>
+</div>
+{% if fac %}
+<br><br>
+        <!-- Nested Row within Card Body -->
+        <div class="row" style="width:100%;" >
+            {% for i in fac %}
+            <div class="col-xl-3 col-md-6 mb-4" id="myMenu">
+                <div class="card  shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-success h5 text-uppercase mb-1">
+                                    {{i.name}}</div>
+                                    <div class="p font-weight-bold text-gray-8000">HOF: {{i.name_of_Hof}}</div><br>
+                                <div class="p font-weight-bold text-gray-800"><a style="text-decoration:none;" href="{% url 'lecfaculty' i.id%}"><i class="fa fa-angle-right"></i> view details</a></div>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% else %}
+        nothing here
+        {% endif %}
+
+{% endblock content %}
+
+
+
+                        <a href="{% url 'lecturerdashboard' %}">
+                            <i class='fa fa-home icon' title="My Dashboard"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>                    
+
+                    <li class="">
+                        <a href="{% url 'studentexammarks' %}">
+                            <i class='fa fa-file-excel icon' title="My Exam score"></i>
+                            <span class="text nav-text">Student Exam Score</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecturercourses' %}">
+                            <i class='fas fa-book icon' title="Course"></i>
+                            <span class="text nav-text">View Course</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'addexam' %}">
+                            <i class='fas fa-book icon' title="Add Exam"></i>
+                            <span class="text nav-text">Add Exam</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'addresult' %}">
+                            <i class='fas fa-book icon' title="Add Result"></i>
+                            <span class="text nav-text">Add Student Result</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecattendance' %}">
+                            <i class='fa fa-envelope icon' title="Attendance"></i>
+                            <span class="text nav-text">Attendance</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecviewattendance' %}">
+                            <i class='fa fa-envelope icon' title="View Attendance"></i>
+                            <span class="text nav-text">View Attendance</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecturernotice' %}">
+                            <i class='fa fa-envelope icon' title="My Message"></i>
+                            <span class="text nav-text">Write a Notice</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecturenoticeboard' %}">
+                            <i class='fa fa-envelope icon' title="My Message"></i>
+                            <span class="text nav-text">Notice Board</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecturermessage' %}">
+                            <i class='fa fa-envelope icon' title="My Message"></i>
+                            <span class="text nav-text">Message</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'lecturercalendar' %}">
+                            <i class='	fa fa-calendar icon' title="Calender"></i>
+                            <span class="text nav-text">Calender</span>
+                        </a>
+                    </li

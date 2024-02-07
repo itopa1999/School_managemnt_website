@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+<style>
+    body{
+    background-color:rgb(217, 234, 241);
+    }
+    .container {
+        margin: auto;
+        top: auto;
+        width: auto;
+        height: 500px;
+        max-width: 1000px;
+        background-color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    h1, h2, h4{
+        color: rgba(43, 45, 46, 0.884);
+    }
+    button {
+        background-color: #0e80ebea;
+        border: none;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border-radius: 5px;
+        height: fit-content;
+        margin-left: 20px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    button:hover {
+        box-shadow: 0 5px 8px 0 #0e80ebea, 0 7px 10px 0 #0e80ebea;
+    }
+</style>
+<body>
+    <br><br><br><br><br><br>
+    <div class="container">
+        <br><br><br>
+        <i class='fa fa-sign-out-alt' style="font-size:80px; color:#a1a1a1;"></i>
+        <h1> Dear Student, <br> You have successfully logout<br> </h1>
+        <h2> your session has ended  </h2>
+
+    <h4>click below to login again.</h4>
+<a href="{% url 'studentlogin' %}"> <button>Login again</button></a>
+
+    </div>
+</body>
+</html>

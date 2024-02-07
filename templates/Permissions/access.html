@@ -1,0 +1,184 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Access</h1>
+</div>
+<br><br>
+        <!-- Nested Row within Card Body -->
+        <div class="row" style="width:100%;" >
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-primary h5 text-uppercase mb-1">
+                                    ACCESS TO STUDENT LOGIN</div><br>
+                                <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'loginaccess' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-gray-1000 h5 text-uppercase mb-1">
+                                    ACCESS TO STUDENT EXAM</div><br>
+                               <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'examaccess' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-success h5 text-uppercase mb-1">
+                                    ACCESS TO STUDENT RESULT</div><br>
+                               <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'resultaccess' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-info h5 text-uppercase mb-1">
+                                    ACCESS TO LECTURER LOGIN</div><br>
+                               <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'loginaccess1' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-danger h5 text-uppercase mb-1">
+                                    ACCESS TO LECTURER EXAM</div><br>
+                               <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'examaccess1' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-success h5 text-uppercase mb-1">
+                                    ACCESS TO LECTURER ATTENDANCE</div><br>
+                               <a class="p h5 font-weight-bold text-gray-800" style="text-decoration:none;" href="{% url 'attaccess' %}"><i class="fa fa-angle-right"></i> view details</a>
+                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-primary h5 text-uppercase mb-1">
+                                    ALL STUDENT LOGIN ACCESS</div><br>
+                                    <a href="{% url 'alllogin' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-lock"></i>
+                                    </a>
+                                    <a href="{% url 'alllogin1' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-unlock"></i>
+                                    </a>
+                                </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-danger h5 text-uppercase mb-1">
+                                    ALL STUDENT RESULT ACCESS</div><br>
+                                    <a href="{% url 'allresult' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-lock"></i>
+                                    </a>
+                                    <a href="{% url 'allresult1' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-unlock"></i>
+                                    </a>                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card  shadow h-100 py-5">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class=" font-weight-bold text-gray-800 h5 text-uppercase mb-1">
+                                    ALL STUDENT EXAM ACCESS</div><br>
+                                    <a href="{% url 'allexam' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-lock"></i>
+                                    </a>
+                                    <a href="{% url 'allexam1' %}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-unlock"></i>
+                                    </a>                            </div>
+                            <div class="col-auto">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    
+
+{% endblock content %}
+

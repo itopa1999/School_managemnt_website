@@ -1,0 +1,44 @@
+{% extends 'student/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+  <!-- Info Alert -->
+ 
+  <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+     <h1 class=" dark h3 mb-0 text-gray" > Library Books</h1>
+ </div>
+
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+      
+      <h6 class="m-0 font-weight-bold text-info h4"> LIBRARY BOOKS AVAILABLE</h6>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" width="100%" cellspacing="0">
+              <thead class="text-success font-weight-bold h5">
+                  {% if books %} 
+                  <th>Book Name</th>
+                  <th>ISBN</th>
+                  <th>Author</th>
+                  <th>Department</th>
+                  
+              </thead> 
+            <tbody class="text-primary font-weight-bold h6">         
+              {% for book in books %}
+          <tr>
+            <td>{{book.name}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.department}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+  </div>
+  {%else%}
+  <h1>Have 0 book</h1>
+  {%endif%}
+{% endblock %}

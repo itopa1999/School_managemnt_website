@@ -1,0 +1,72 @@
+{% extends 'registry/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    
+    select{
+width:150px;
+height:35px;
+border:3px solid #ddd;
+border-radius:8px;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{stu.name}} | {{stu.matric_no}}</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> {{stu.name}} Transaction Summary </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form method="get">
+                                    {% csrf_token %}
+                                    {{myFilter.form}}<button class="btn btn-primary m-2">Filter</button><br><br>
+                                </form>
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if tra %}   
+                                        <th>Date</th>
+                                            <th>Levy</th>
+                                            <th>Description</th>
+                                            <th>Credit</th>
+                                            <th>Debit</th>
+                                            <th>Balance</th>
+                                            <th>posted by</th>
+                                    </thead> 
+                                                     
+                                    {% for tra in tra %}
+                                    <tbody>
+                                        <td> {{tra.date}}</td>
+                                        <td>{{tra.schoollevy}}</td>
+                                        <td>{{tra.descrip}}</td>
+                                        <td>{{tra.credit}}</td>
+                                        <td>{{tra.debit}}</td>
+                                        <td>-</td>
+                                        <td>{{tra.user}}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <td></td>
+                                    <td></td>
+                                  <td>Total</td>
+                                  <td>{{total_credit}}</td>
+                                  <td>{{total_paid}}</td>
+                                  <td>{{bal}}</td>
+                                  <td></td>
+                                    
+                                    {% else %}
+                                    no data available to View
+                                    {% endif %}                                          
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+
+{% endblock content %}

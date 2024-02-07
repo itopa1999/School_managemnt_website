@@ -1,0 +1,60 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    .calendar {
+        font-size: 13px;
+        margin-bottom:60px;
+      }
+          
+      .calendar th {
+        background-color: rgba(23, 116, 255, 0.568);
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        border: none;
+        border-top-left-radius: 35px;
+        border-bottom-right-radius: 25px;
+      }
+      
+      .calendar td {
+        width: 200px;
+        height: 150px;
+        padding: 20px 0px 0px 5px;
+        text-align: center;
+        border: 1px solid rgba(23, 116, 255, 0.568);
+        background-color: white;
+        word-wrap: break-word;
+        word-break: break-all;
+        
+      }
+      
+      .month {
+        font-size: 25px;
+      }
+      
+      .date {
+        font-size: 25px;
+      }
+      
+      ul {
+        height: 100%;
+        padding: 0px 10px 0px 20px;
+        color: rgb(50, 187, 8);
+        font-size: 12px;
+      }
+    
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Calendar for the month</h1>
+</div>
+<br>
+
+{{calendar}}
+
+{% endblock %}

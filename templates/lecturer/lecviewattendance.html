@@ -1,0 +1,62 @@
+{% extends 'lecturer/main.html' %}
+{% block content %}
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+  
+      h6 {
+        text-align: center;
+      }
+  
+      .row {
+        margin: 100px;
+      }
+      table,td{
+        background-color: azure;
+        border-collapse: collapse;
+        font-family:Sofia;
+    }
+    </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">My Marks</h6>
+      </div>
+      <table class="table" id="tableheader" id="dev-table">
+        
+          <tr>
+  
+            <th>Course</th>
+            <th>Department</th>
+            <th>Total Student Expected</th>
+            <th>Total Student present</th>
+            <th>Total Student Absence</th>
+            <th>Date</th>
+          </tr>
+        
+          {% for stu in att %}
+        <tr>
+  
+            <td>{{stu.course}}</td>
+            <td>{{stu.department}}</td>
+            <td>{{stu.total_student}}</td>
+            <td>{{stu.present_student}}</td>
+            <td>{{stu.absence_student}}</td>
+            <td>{{stu.date}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+
+
+{% endblock content %}

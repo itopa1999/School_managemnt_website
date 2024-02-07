@@ -1,0 +1,66 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Library Books</h1>
+</div>{% if books %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Books Lists</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                          <th>Book Name</th>
+                                          <th>ISBN</th>
+                                          <th>Author</th>
+                                          <th>Department</th>
+                                          </tr>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                          <th>Book Name</th>
+                                          <th>ISBN</th>
+                                          <th>Author</th>
+                                          <th>Department</th>
+                                          </tr>
+                                        </tr>
+                                    </tfoot>
+                                    
+                                    {% for book in books %}
+                                    <tbody>
+                                        <tr>
+                                          <td>{{book.name}}</td>
+                                          <td>{{book.isbn}}</td>
+                                          <td>{{book.author}}</td>
+                                          <td>{{book.department}}</td></tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                                {% else %}
+nothing is found hrer
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+
+            
+
+{% endblock content %}

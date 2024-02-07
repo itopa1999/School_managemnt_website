@@ -1,0 +1,445 @@
+{% load static %}
+<!DOCTYPE html>
+  <!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!----======== CSS ======== -->    
+    <!----===== Boxicons CSS ===== -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <!--<title>Dashboard Sidebar Menu</title>--> 
+    <style>
+        body{
+            overflow-y: scroll;
+        }
+        body::-webkit-scrollbar{
+            display: none;
+        }
+        <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' />
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Sofia;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+
+
+    .banner.blue {
+        background: #04a1dc;
+        background: -moz-linear-gradient(left,  #04a1dc 1%, #0cb2ca 100%);
+        background: -webkit-linear-gradient(left,  #04a1dc 1%,#0cb2ca 100%);
+        background: linear-gradient(to right,  #04a1dc 1%,#0cb2ca 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04a1dc', endColorstr='#0cb2ca',GradientType=1 );
+    background: #0f4375;
+    background: -moz-linear-gradient(left,  #0f4375 0%, #2989d8 49%, #0f4375 100%);
+    background: -webkit-linear-gradient(left,  #0f4375 0%,#2989d8 49%,#0f4375 100%);
+    background: linear-gradient(to right,  #0f4375 0%,#2989d8 49%,#0f4375 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4375', endColorstr='#0f4375',GradientType=1 );
+        
+        padding: 35px;
+        color: #fff;
+    }
+    .content-inner {
+        padding: 7px 0;
+    }
+
+    body.dark .banner.blue {
+        background: -moz-linear-gradient(left,  #2d2e2e 1%, #ced8da 100%);
+        background: -webkit-linear-gradient(left,  #2d2e2e 40%,#ced8da 60%);
+        background: linear-gradient(to right,  #2d2e2e 30%,#ced8da 70%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04a1dc', endColorstr='#0cb2ca',GradientType=1 );
+    background: #0f4375;
+    background: -moz-linear-gradient(left,  #2d2e2e  0%, #ced8da 49%, #303133 100%);
+    background: -webkit-linear-gradient(left,  #2d2e2e  0%,#ced8da 49%,#303133 100%);
+    background: linear-gradient(to right,  #2d2e2e  0%,#ced8da 49%,#303133 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4375', endColorstr='#0f4375',GradientType=1 );
+    }
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: #555;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+        width: 45px;
+      }
+</style>
+</head>
+<body onload="message()">
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                <a href="{% url 'viewprofile' %}" ><img src="{{request.user.student.profile_pic.url}}" height=40 width=40 title="view profile"></a>
+                </span>
+
+                <div class="text logo-text">
+                    <center><span class="name"><a href="{% url 'viewprofile' %}" ><img src="{{request.user.student.profile_pic.url}}" height=100 width=100 style="border-radius: 50%;" title="view profile"></a></span>
+                    <span class="profession">{{request.user.first_name}}</span>
+                    <span class="profession">{{request.user.userid}}</span></center>
+                </div>
+            </div>
+            <i class='fa fa-caret-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='fa fa-search icon' title="Search here "></i>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+                </li>
+
+                    <li class="">
+                        <a href="{% url 'studentdashboard' %}">
+                            <i class='fa fa-home icon' title="My Dashboard"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a href="{% url 'timetable' %}" id="come">
+                            <i class='fa fa-table icon' title="Timetable"></i>
+                            <span class="text nav-text">Timetable</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'examtable' %}" id="come">
+                            <i class='fa fa-table icon' title="Exam Timetable"></i>
+                            <span class="text nav-text">Exam Timetable</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'libraryaccount' %}" id="come">
+                            <i class='fa fa-university icon' title="Library"></i>
+                            <span class="text nav-text">Library</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'studentexam' %}" id="come">
+                            <i class='fa fa-sticky-note icon' title="Examination"></i>
+                            <span class="text nav-text">Exam</span>
+                        </a>
+                    </li>
+                    
+
+                    <li class="">
+                        <a href="{% url 'studentmarks' %}">
+                            <i class='fa fa-file-excel icon' title="My Exam score"></i>
+                            <span class="text nav-text">Exam score</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'sturesult' %}">
+                            <i class='fa fa-certificate icon' title="My Result"></i>
+                            <span class="text nav-text">Result</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'viewcourses' %}">
+                            <i class='fas fa-book icon' title="My Course"></i>
+                            <span class="text nav-text">View Course</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'studentnoticeboard' %}">
+                            <i class='fas fa-exclamation-circle icon' title="Notice"></i>
+                            <span class="text nav-text">Notice Board</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'payment' %}">
+                            <i class='fas fa-credit-card icon' title="Payment"></i>
+                            <span class="text nav-text">Payment</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'studentmessage' %}">
+                            <i class='fa fa-envelope icon' title="My Message"></i>
+                            <span class="text nav-text">Message</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a href="{% url 'stustatus' %}">
+                            <i class='fa fa-archive icon' title="Upload Status"></i>
+                            <span class="text nav-text">Status</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a href="{% url 'stuviewstatus' %}">
+                            <i class='fa fa-list icon' title="View Status"></i>
+                            <span class="text nav-text">View Status</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'adminstatus' %}">
+                            <i class='fa fa-check icon' title="admission Status"></i>
+                            <span class="text nav-text">Admission Status</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a href="{% url 'studentcalendar' %}">
+                            <i class='	fa fa-calendar icon' title="Calender"></i>
+                            <span class="text nav-text">Calender</span>
+                        </a>
+                    </li>
+
+
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="{% url 'studentchangepassword' %}">
+                        <i class='fa fa-key icon' title="Change Password"></i>
+                        <span class="text nav-text">Change Password</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="#" onclick="message3()">
+                        <i class='fa fa-sign-out-alt icon' title="Logout"></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+    </nav>
+    <section class="home">
+        <div class="contain" >
+            <div class="banner blue">
+                <div class="cl">
+                        <h4 id="wlc"></h4>
+                        
+                        <h5><p class="mt-4" id="date"></p></h5>
+                    </div>
+                </div>
+            </div>
+            <button onclick="topFunction()" class="bg-info" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button>
+<div style="margin:5px;">
+    {% include 'student/msg1.html' %} 
+    <div id="myDIV" >  
+{% block content %}
+   
+{% endblock content %}
+    </div>
+        </div>
+        
+        </section> 
+    <script>
+    const body = document.querySelector('body'),
+    sidebar = body.querySelector('nav'),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text");
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+let darkMode = localStorage.getItem("dark-mode");
+
+const enableDarkMode = () => {
+    body.classList.add("dark");
+    localStorage.setItem("dark-mode", "enabled");
+  };
+  if (darkMode === "enabled") {
+    enableDarkMode(); 
+  }
+  const disableDarkMode = () => {
+    body.classList.remove("dark");
+    localStorage.setItem("dark-mode", "disabled");
+  };
+  
+  modeSwitch.addEventListener("click", () => {
+    darkMode = localStorage.getItem("dark-mode");
+    if (darkMode === "disabled") {
+      enableDarkMode();
+    } else {
+      disableDarkMode();
+    }
+
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+    }else{
+        modeText.innerText = "Dark mode";
+        
+    }
+  });
+
+</script>
+
+<script>
+    function message3(){
+        Swal.fire({
+            title: 'Ready to Leave?',
+            icon: 'question',
+            iconColor:'aaa',
+            width: 400,
+            showConfirmButton:true,
+            showCancelButton:true,
+            allowOutsideClick:true,
+            scrollbarPadding:false,
+            showCloseButton: true,
+            reverseButtons:true,
+            focusConfirm:false,
+            confirmButtonText:'Logout',
+            html:
+            "<b>Select 'Logout' below if you are ready to end your current session.",
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{% url 'studentlogout' %}"
+            }
+        })
+    }
+
+  </script>
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+     <script src="{% static '/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js1/sb-admin-2.min.css' %}"></script>
+
+
+    <script>       
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+
+
+
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myDIV *").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+
+
+    var d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+
+
+
+    </script>
+    <script>
+        var myDate = new Date();
+        var hrs = myDate.getHours();
+    
+        var greet;
+    
+        if (hrs < 12)
+            greet = 'Good Morning';
+        else if (hrs >= 12 && hrs <= 17)
+            greet = 'Good Afternoon';
+        else if (hrs >= 17 && hrs <= 24)
+            greet = 'Good Evening';
+    
+        document.getElementById('wlc').innerHTML =
+            '<b>' + greet + ', {{request.user.first_name}}</b>';
+        </script>
+
+</body>
+</html>

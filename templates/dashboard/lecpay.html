@@ -1,0 +1,64 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Lecturer Salary</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> Lecturer Salary</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res %} 
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                        <th>Price</th>
+                                    </thead> 
+                                                       
+                                    {% for res in res %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        <td >{{res.price}}</td>
+                                        {% endfor %}
+                                        
+                                    </tr>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td class="m-0 h5 font-weight-bold text-success">Salary</td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td class="m-0 h3 font-weight-bold text-danger">{{t_price}}</td>
+                                    {% else %}
+                                    no data available to View 
+                                    {% endif %}   
+                                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+{% endblock content %}

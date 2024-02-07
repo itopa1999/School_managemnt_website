@@ -1,0 +1,53 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Update Faculty </h1>
+</div>
+
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+              
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Update Faculty</h1>
+                      </div>
+                      <form method="POST" class="user">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                          {% render_field form.name|attr:'required:true' maxlength="30" type="text" class="form-control form-control-user" %}
+                            </div>
+                            <div class="col-sm-6">
+                              {% render_field form.name_of_Hof|attr:'required:true' maxlength="20" type="text" class="form-control form-control-user" %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          {% render_field form.description  class="form-control" maxlength="30" style="height:50px; border-radius:50px;"  %}
+                        </div>
+                        {{form.errors}}
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                              Update{{form.errors}}
+                          </button>
+                 </form>
+                 {{forms.error}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+{% endblock content %}

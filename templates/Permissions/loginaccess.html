@@ -1,0 +1,84 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+    #doPrint {
+		background-color:rgb(37, 30, 30);
+		color: white;
+		padding: 5px;
+		border: none;
+		cursor: pointer;
+		width: 6%;
+		opacity: 0.9;
+		border-radius:8px;
+	}
+	
+	#doPrint:hover {
+		opacity: 1;
+	}
+    select ,input[type=number], input[type=text]{
+width:150px;
+height:35px;
+border:3px solid #ddd;
+border-radius:8px;
+    }
+
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Login Access To Student</h1>
+</div>
+
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary">ACTIVATE AND DEACTIVATE STUDENT LOGIN ACCESS</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form method="get">
+                                    {% csrf_token %}
+                                {{myFilter.form}}<button style="text-align: center;" id="doPrint">Filter</button><br><br>
+                                </form>
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if stu %}
+                                        <th>Name</th>
+                                        <th>Matric NO</th>
+                                        <th>Department</th>
+                                        <th>level</th>
+                                        <th>Set</th>
+                                        <th>Deactivate</th>
+                                        <th>Activate</th>
+                                    </thead> 
+                                    {% for stu in stu %}
+                                    <tbody>
+                                        <tr>
+                                        <td>{{stu.name}}</td>
+                                        <td>{{stu.matric_no}}</td>
+                                        <td>{{stu.department}}</td>
+                                        <td>{{stu.level}}</td>
+                                        <td>{{stu.adm_year}}</td>
+                                    <td><center><a href="{% url 'disapproveaccess' stu.id %}"><i class="fa fa-lock fa-2x"></i></a><center></td>
+                                    <td><center><a href="{% url 'approveaccess' stu.id %}" ><i class="fa fa-unlock fa-2x"></i></a><center></td>
+                                    {% endfor %}
+                                    </tr>
+
+                                    {% else %}
+                                    no data available to View
+                                    {% endif %}   
+                                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    {% endblock content %}

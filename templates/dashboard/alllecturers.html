@@ -1,0 +1,72 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Lecturer</h1>
+</div>
+{% if lec %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Lecturer List</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Staff ID</th>
+                                            <th>Department</th>
+                                            <th>Faculty</th>
+                                            <th>View Profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Staff ID</th>
+                                            <th>Department</th>
+                                            <th>Faculty</th>
+                                            <th>View Profile</th>
+                                        </tr>
+                                    </tfoot>
+                                    
+                                    
+                                    <tbody>
+                                        {% for i in lec %}
+                                        <tr>
+                                            <td>{{i.name}}</td>
+                                            <td>{{i.staff_ID}}</td>
+                                            <td>{{i.department}}</td>
+                                            <td>{{i.faculty}}</td>
+                                            <td style="width:110px"><center><a href="{% url 'lecturer' i.id %}"><i class="fa fa-eye" style="font-size:24px"></i></center></td>
+                                        </tr>
+                                        {% endfor %}
+                  {% else %}
+                  nothing is found hrer
+                                                     {% endif %}
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+
+                
+                  
+{% endblock content %}

@@ -1,0 +1,72 @@
+    <style>
+      .alert {
+        visibility: hidden;
+        min-width: 250px;
+        text-align: left;
+        border-radius: 2px;
+        position: fixed;
+        z-index: 1;
+        right: 3%;
+        top: 90px;
+    }
+    
+    .alert.show {
+        visibility: visible;
+        -webkit-animation: fadein 1.5s;
+        animation: fadein 1.5s;
+    }
+    
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 90px; opacity: 1;}
+    }
+    
+    @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 90px; opacity: 1;}
+    }
+    #error {
+      background-color: #ffdddd;
+  }
+  #info {
+    background-color: #ddf3ff;
+}
+#success {
+  background-color: #ddffe3;
+}
+  </style>
+  <div class="container-fluid">
+   <!-- Info Alert -->
+   {% if messages %}
+  {% for m in messages %}
+  {% if m.tags == 'error' %}
+   <div id="error" class="alert text-danger shadow h-20 py-2 border-left-danger  alert-dismissible fade show">
+      <i class="fa fa-bell-slash" style="font-size:25px"></i>
+    <strong class="mx-2">{{m}}</strong>
+  </div>
+  {% endif %}
+  {% if m.tags == 'info' %}
+   <div id="info" class="alert text-primary shadow h-20 py-2 border-left-primary  alert-dismissible fade show">
+      <i class="fa fa-question-circle" style="font-size:25px"></i>
+    <strong class="mx-2">{{m}}</strong>
+  </div>
+  {% endif %}
+  {% if m.tags == 'success' %}
+  <div id="success" class="alert text-success shadow h-20 py-2 border-left-success  alert-dismissible fade show">
+    <i class="fa fa-check-circle" style="font-size:25px"></i>
+    <strong class="mx-2">{{m}}</strong>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+
+
+  <script>
+    window.setTimeout(function() {
+      $(".alert").fadeTo(1000, 0).slideUp(500, function(){
+          $(this).remove(); 
+      });
+  }, 4000);
+
+</script>

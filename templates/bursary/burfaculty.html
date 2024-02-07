@@ -1,0 +1,100 @@
+{% extends 'bursary/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    table{
+        width:50%;
+    }
+    #header {
+        border: 2px solid none;
+        padding: 5px;
+        font-style: italic;
+        font-weight: bolder;
+        background-color: #0e1c6d;
+        margin-top: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: white;
+        width: 100%;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{fac.name}}</h1>
+</div>
+
+<!-- Collapsable Card Example -->
+<div class="card shadow mb-4">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <center><h4 class="m-0 font-weight-bold text-primary py-4">Faculty of {{fac.name}}</h4></center>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <table>
+                <div id="header" style="text-align:left">Faculty details</div>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Name of HOF</td>
+                    <td>{{fac.name_of_Hof}}</td>
+                </tr>
+                <tr>
+                    
+                    <td>No. of Departments</td>
+                    <td>{{depcount}}</td>
+                </tr>
+                <tr>
+                    <td>Total No. of Student</td>
+                    <td>{{stucount}}</td>
+                </tr>
+                <tr>
+                    <td>Total Part-time Student</td>
+                    <td>{{pt}}</td>
+                </tr>
+                <tr>
+                    <td>Total Full-time Student</td>
+                    <td>{{ft}}</td>
+                </tr>
+                <tr>
+                    <td>Total HND Student</td>
+                    <td>{{hnd}}</td>
+                </tr>
+                <tr>
+                    <td>Total ND Student</td>
+                    <td>{{nd}}</td>
+                </tr>
+            </table>
+            <br><br>
+            {% for dep in dep %}
+            <table id="tableheader">
+                
+                <div id="header">{{dep.name}}</div>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Name of HOD</td>
+                    <td>{{dep.hod}}</td>
+                </tr>
+                <tr>
+                    <td>Total No. of Students</td>
+                    <td>{{dep1}}</td>
+                </tr>
+                {% endfor %} 
+            </table>
+            <br><br>
+              
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock content %}

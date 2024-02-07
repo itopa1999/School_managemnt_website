@@ -1,0 +1,101 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .card-margin {
+        margin-bottom: 1.875rem;
+    
+    }
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: white;
+        background-clip: border-box;
+        border: 1px solid #e6e4e9;
+        border-radius: 8px;
+    }
+    
+    .card .card-header.no-border {
+        border: 0;
+    }
+    .card .card-header {
+        background: white;
+        padding: 0 0.9375rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        min-height: 50px;
+   
+    .widget-49 .widget-49-meeting-points {
+      font-weight: 400;
+      font-size: 13px;
+      margin-top: .5rem;
+    }
+</style>
+<div class="container-fluid">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Question</h1>
+</div>
+
+
+<div class="container">
+  
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="card card-margin">
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-meeting-info">
+                            <center><span class="widget-49-pro-title text-info"><h3>{{course.name}}</h3></span></center>
+                            {% for q in que %}
+                            <h5 class="text-danger">{{ forloop.counter }}. {{q.question}}</h5>
+                            
+                                  <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" id="{{q.option1}}" checked>
+                                      {{q.option1}}
+                                  </div>
+                                  <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" id="{{q.option2}}" checked>
+                                      {{q.option2}}
+                                  </div>
+                                  <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" id="{{q.option3}}" checked>
+                                      {{q.option3}}
+                                  </div>
+                                  <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" id="{{q.option4}}" checked>
+                                      {{q.option4}}
+                                  </div>
+                                  <div class="form-check mx-4">
+                                    <i class="fa fa-thumbs-up" style="font-size:25px; color:green;"></i>
+                                      {{q.answer}}
+                                  </div>
+                                  <div class="form-check mx-4">
+                                <a href="{% url 'deletequestion' q.id %}"><i class="fa fa-trash" style="font-size:25px; color:red;"></i></a> Delete
+                                  </div>
+                                {% endfor %}
+                                <br>
+                                <div class="pagination">
+                                  <span class="step-links">
+                                  {% if que.has_previous %}
+                                  <a href="?page=1">&laquo; previous</a>
+                                  <a href="?page={{ que.previous_page_number }}">first</a>
+                                  {% endif %}
+                                  <span class="current">
+                                  Page {{ que.number }} of {{ que.paginator.num_pages }}.
+                                  </span>
+                                  {% if que.has_next %}
+                                  <a href="?page={{ que.next_page_number }}">last</a>
+                                  <a href="?page={{ que.paginator.num_pages }}">next &raquo;</a>
+                                  {% endif %}
+                                  </span>
+                                  </div>
+                          </div>
+                        </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,230 @@
+{% extends 'student/main.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+     
+    .order-card {
+        color: #fff;
+    }
+    
+    .bg-c-blue {
+        background: linear-gradient(45deg,#4099ff,#73b4ff);
+        height:200px;
+    }
+    
+    .bg-c-green {
+        background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+        height:200px;
+    }
+    
+    .bg-c-yellow {
+        background: linear-gradient(45deg,#FFB64D,#ffcb80);
+        height:200px;
+    }
+    
+    .bg-c-pink {
+        background: linear-gradient(45deg,#FF5370,#ff869a);
+        height:200px;
+    }
+    
+    
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .card .card-block {
+        padding: 25px;
+    }
+    
+    .order-card i {
+        font-size: 26px;
+    }
+    
+    .f-left {
+        float: left;
+    }
+    
+    .f-right {
+        float: right;
+    }   
+        </style>
+</head>
+<div class="container">
+    <div class=" dark d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class=" dark h3 mb-0 text-gray-800" > Dashboard</h1>
+    </div>
+    <marquee>
+        <strong id="wlc"></strong>
+        {% if nott %}
+                {% for i in nott %}<img class="rounded-circle mr-1 ml-3 small text-gray-500" src="{{i.profile_pic.url}}"
+                alt="..." height=50 width=50> {{i.sender}} || {{i.title}}......... {% endfor %}
+                {% else %}
+                <strong>.......!!!!No notification for today yet!!!.....</strong>
+                {% endif %} <b>Do have a good day</b>
+        </marquee>
+    <br><br>
+  <div class="row">
+    
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-blue order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'sturesult' %}">
+              <div class="card-block">
+                  <h2 class="text-center">Result<br><br><i class="fa fa-certificate "style="font-size:50px;"></i></h2>
+                 
+              </div></a>
+          </div>
+      </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-green order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'studentexam' %}">
+              <div class="card-block">
+                <h2 class="text-center">Exam<br><br><i class="fa fa-sticky-note"style="font-size:50px;"></i></h2>
+
+              </div></a>
+          </div>
+      </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-yellow order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'viewcourses' %}">
+              <div class="card-block">
+                <h2 class="text-center">My Course<br><br><i class="fa fa-book"style="font-size:50px;"></i></h2>
+
+              </div></a>
+          </div>
+      </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-pink order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'libraryaccount' %}">
+              <div class="card-block">
+                <h2 class="text-center">Library<br><br><i class="fa fa-university"style="font-size:50px;"></i></h2>
+
+              </div></a>
+          </div>
+      </div>
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-pink order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'payment' %}">
+            <div class="card-block">
+                <h2 class="text-center">Transaction history<br><br><i class="fa fa-credit-card"style="font-size:50px;"></i></h2>
+
+            </div></a>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'stuviewstatus' %}">
+            <div class="card-block">
+                <h2 class="text-center">View Status<br><br><i class="fa fa-list"style="font-size:50px;"></i></h2>
+
+            </div></a>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-green order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'studentnoticeboard' %}">
+            <div class="card-block">
+                <h2 class="text-center">NoticeBoard<br><br><i class="fa fa-exclamation-circle"style="font-size:50px;"></i></h2>
+
+            </div></a>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-blue order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'studentmessage' %}">
+            <div class="card-block">
+                <h2 class="text-center">Inbox messages<br><br><i class="fa fa-envelope"style="font-size:50px;"></i></h2>
+
+            </div></a>
+        </div>
+
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+            <a style="text-decoration:none; color:white;"  href="{% url 'adminstatus' %}">
+            <div class="card-block">
+                <h2 class="text-center">Admission Status<br><br><i class="fa fa-check"style="font-size:50px;"></i></h2>
+
+            </div></a>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-6 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Ajayi Polytechnic Vision</h6>
+            
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+           <p>To raise giants and produce skilled technicians and managers whoa are enterpreneurship driven.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="col-xl-6 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Ajayi Polytechnic Mission</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+              
+                <div class="mt-4 text-center small">
+                    <p> Ajayi Polytechnic is focused on providing our graduates with a technical and managerial skills that
+                        will make them sought after in their chosen fields and grooming them to ultimely set up their enterpreneurial 
+                        organisation in the future.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Messages</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                {% for i in meg %}
+                <div class="icon-circle">
+                    <img class="rounded-circle" src="{{i.profile_pic.url}}"
+                    alt="..." height="50" width="50">
+                </div>
+                <div class="small text-gray-500">{{i.sender}} , {{i.date}}.</div>
+                <span class="text-info font-weight-bold"><center>{{i.subject}}</center></span>
+                <span class="text-primary">{{i.message}}</span>
+            </div>
+        </div>
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock content %}

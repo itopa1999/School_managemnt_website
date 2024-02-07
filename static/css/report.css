@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+    background-color: white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(221, 20, 20);
+}
+
+.header {
+    background-color: white;
+    border: 3px solid #1d098d;
+    padding: 8px;
+    height: 60px;
+}
+
+
+.column {
+    float: left;
+    padding: 10px;
+    height: 700px;
+    background-color: white;
+    border: 3px solid #1d098d;
+    position: static;
+   
+}
+
+
+.column.side {
+    width: 23%;
+    border-left: 5px solid #1d098d;
+    
+}
+
+
+.column.middle {
+    width: 77%;
+    border-right: 5px solid #1d098d;
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    
+}
+
+
+.footer {
+    background-color: white;
+    border: 3px solid #1d098d;
+    padding: 5px;
+    text-align: center;
+    height: 60px;
+}
+img{
+    position: relative;
+    left: 0;
+    margin-left: -10px;
+    margin-top: -8px;
+    width: 100px;
+    height: 50px;
+}
+.pagination a {
+    position: relative;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    left: 67%;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;
+}
+table {
+    border-collapse: collapse;
+    width: 150%;
+    border: 1px solid #09186bea;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+  
+  th {
+    border: 1px solid #09186bea;
+    text-align: left;
+    padding: 4px 4px;
+    background-color: #09186bea;
+    color: white;
+    font-size: 16px;
+    
+  }
+    
+  
+  
+  td{
+  
+    border-bottom: 2px solid #dddddd;
+    text-align: left;
+    font-size: 18px;
+    padding: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width:50px;
+    word-wrap: break-word;
+  
+  }
+  #name{
+  width: 200px;
+  text-transform: uppercase;
+  }
+  #matric{
+  width: 230px;
+  text-transform: uppercase;
+  }
+  #department{
+  width:160px;
+  text-transform: uppercase;
+  }
+  #faculty{
+  width:100px;
+  text-transform: uppercase;
+  }
+  #program{
+  width:110px;
+  text-transform: uppercase;
+  }  
+  
+  #hod{
+  width:230px ;
+  text-transform: uppercase;
+  }
+  #level{
+    width: 80px;
+    text-transform: uppercase;
+  }
+  #lev{
+    width: 160px;
+    text-transform: uppercase;
+  }
+  #cpm{
+    width: 200px;
+    text-transform: uppercase;
+  }
+  #amt{
+    width: 100px;
+    text-transform: uppercase;
+  }
+  #caption{
+  font-size: 30px;
+  font-weight: bold;
+  color: #09186bea;
+  }
+  button {
+    background-color: #09186bea;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    float:left;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: white;
+    color: #09186bea;
+}
+.dropbtn {
+    background-color: white;
+    color: #09186bea;
+    border: 3px solid #09186bea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding:5px;
+    font-size: 16px;
+    cursor: pointer;
+    height:fit-content;
+    font-weight: bold;
+    width:fit-content;
+    overflow: auto;
+    height: 45px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #09186bea;
+    color:white;
+    border: none;
+    
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px #09186bea;
+    z-index: 1;
+    margin-top: 40px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0px 8px 16px 0px #09186bea;
+}
+
+.dropdown a:hover {background-color: #1332df3d;
+}
+
+.show {display: block;}
+
+#myDIV {
+    display:none;
+}
+
+select {
+    width:55%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 2px;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    margin-bottom: 10px;
+}
+
+select :focus {
+  border: 3px solid #09186bea;
+}
+
+input[type=number] {
+    width: 55%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type=number]:focus {
+    border: 3px solid #09186bea;
+
+}
+
+input[type=text] {
+    width: 55%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+  border: 3px solid #09186bea;
+}
+
+label{
+    color: #09186bea;
+    font-weight: bold;
+
+}

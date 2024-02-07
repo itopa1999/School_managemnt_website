@@ -1,0 +1,199 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+  <style media="screen">
+  
+
+  </style>
+</head>
+<div class="container-fluid">
+  <!-- Info Alert -->
+ 
+ 
+ <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+     <h1 class=" dark h3 mb-0 text-gray" >View Course</h1>
+ </div>
+
+
+ {% if cou %}                 
+<div class="card shadow mb-4" id="printDiv">
+    <div class="card-header py-3">
+        
+        <h6 class="m-0 font-weight-bold h5 text-info"> {{tit}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                
+                <thead class="m-0 font-weight-bold h5 text-primary">
+                    
+                    <th>(Course code)Course Name</th>
+                    <th>Course Unit</th>
+                    <th>Semester</th>
+                    
+                    
+                    
+                </thead> 
+                                   
+                {% for res in cou %}
+                <tbody class="m-0 font-weight-bold h6 text-success m-2">
+                    <td>{{res.course}}</td>
+                    <td >{{res.course_unit}}</td>
+                    <td >{{res.semester}}</td>
+                    
+                    
+                    {% endfor %}
+                     
+                </tr>
+                <td ></td>
+                <td >{{total}}</td>
+                <td ></td>
+
+               
+                                                          
+                </tbody>
+
+
+            </table>  
+       
+        </div>
+    </div>
+</div>
+{% else %}
+
+{% endif %}
+{% if cou1 %}
+<div class="card shadow mb-4" id="printDiv1">
+    
+    <div class="card-header py-3">
+        
+        <h6 class="m-0 font-weight-bold text-primary"> {{tit1}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+               <thead class="m-0 font-weight-bold h5 text-primary">
+                    
+                    <th>(Course code)Course Name</th>
+                    <th>Course Unit</th>
+                    <th>Semester</th>
+                    
+                    
+                </thead>
+                                          
+                {% for res in cou1 %}
+                <tbody class="m-0 font-weight-bold h6 text-success m-2">>
+                    <td>{{res.course}}</td>
+                    <td >{{res.course_unit}}</td>
+                    <td >{{res.semester}}</td>
+                    {% endfor %}
+                </tr>
+                    
+                <td ></td>
+                <td >{{total1}}</td>
+                <td ></td>
+                </tbody>
+                
+                
+                    
+           </table>  
+                                  
+        </div>
+    </div>
+</div>
+{% else %}
+{% endif %}
+{% if cou2 %}
+<div class="card shadow mb-4" id="printDiv2">
+    <div class="card-header py-3">
+        
+        <h6 class="m-0 font-weight-bold text-primary"> {{tit2}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                
+                <thead class="m-0 font-weight-bold h5 text-primary">
+                    
+                    <th>(Course code)Course Name</th>
+                    <th>Course Unit</th>
+                    <th>Semester</th>
+                    
+                    
+                </thead>
+                                                
+                {% for res in cou2 %}
+                <tbody class="m-0 font-weight-bold h6 text-success m-2">>
+                    <td>{{res.course}}</td>
+                    <td >{{res.course_unit}}</td>
+                    <td >{{res.semester}}</td>
+                    {% endfor %}
+                    
+                </tr>
+                <td ></td>
+                <td >{{total2}}</td>
+                <td ></td>
+                    
+                </tbody>
+               
+                    
+           </table>  
+                                    
+        </div>
+    </div>
+</div>
+{% else %}
+                    {% endif %}
+        
+{% if cou3 %}
+<div class="card shadow mb-4" id="printDiv3">
+    <div class="card-header py-3">
+       
+        <h6 class="m-0 font-weight-bold text-primary"> {{tit3}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead class="m-0 font-weight-bold h5 text-primary">
+                    
+                    <th>(Course code)Course Name</th>
+                    <th>Course Unit</th>
+                    <th>Semester</th>
+                    
+                    
+                </thead>
+                                                
+                {% for res in cou3 %}
+                <tbody class="m-0 font-weight-bold h6 text-success m-2">>
+                    <td>{{res.course}}</td>
+                    <td >{{res.course_unit}}</td>
+                    <td >{{res.semester}}</td>
+                    {% endfor %}
+                    </tr>
+                    
+                    <td ></td>
+                <td >{{total3}}</td>
+                <td ></td>
+                    
+                    
+                </tbody>
+           </table>  
+                              
+        </div>
+    </div>
+</div>
+{% else %}
+                    {% endif %}
+</div>
+</div>
+
+{% endblock content %}
+
+   

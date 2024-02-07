@@ -1,0 +1,64 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Faculty</h1>
+</div>
+
+
+
+<div class="container">
+  
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+              <div class="col-lg-5 d-noned-lg-block "><br><br><br><br><br><br><center><i class="fa fa-building fa-10x"></i></center></div>
+              <div class="col-lg-7">
+                  <div class="p-5">
+                      <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Create Faculty</h1>
+                      </div>
+                      <form method="POST" class="user">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                            {% render_field form.name|attr:'required:true' maxlength="30" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Faculty Name" %}
+                              </div>
+                              <div class="col-sm-6">
+                                {% render_field form.name_of_Hof|attr:'required:true' maxlength="20" type="text" class="form-control form-control-user" id="exampleFirstName"  placeholder="Name of HOF" %}
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            {% render_field form.date|attr:'required:true' type="hidden" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Description" %}
+                          </div>
+                          <div class="form-group">
+                            {% render_field form.created_by|attr:'required:true' type="hidden" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Description" %}
+                          </div>
+                          <div class="form-group">
+                            {% render_field form.description|attr:'required:true' type="text" maxlength="30" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Description" %}
+                          </div><br><br>
+                          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <b class=" mb-0 text-danger">This Token Is Required for Authentication</b>
+                        </div>
+
+                          <div class="form-group">
+                            {% render_field form.token|attr:'required:true' maxlength="10" type="text" class="form-control form-control-user" id="exampleInputEmail"  placeholder="Token" %}
+                          </div>
+                          
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <i class="fas fa-plus "></i> Create
+                          </button>
+                          <hr>
+                        </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+
+{% endblock content %}

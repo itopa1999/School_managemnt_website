@@ -1,0 +1,76 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Attendance</h1>
+</div>{% if att %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Attendance Lists</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Course</th>
+                                            <th>Department</th>
+                                            <th>Total Student Expected</th>
+                                            <th>Total Student present</th>
+                                            <th>Total Student Absence</th>
+                                            <th>Date</th>
+                                            <th>Lecturer</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Course</th>
+                                            <th>Department</th>
+                                            <th>Total Student Expected</th>
+                                            <th>Total Student present</th>
+                                            <th>Total Student Absence</th>
+                                            <th>Date</th>
+                                            <th>Lecturer</th>
+                                        </tr>
+                                    </tfoot>
+                                    
+                                    
+                                    <tbody>
+                                        {% for i in att %}
+                                        <tr>
+                                            <td>{{i.course}}</td>
+                                            <td>{{i.department}}</td>
+                                            <td>{{i.total_student}}</td>
+                                            <td>{{i.present_student}}</td>
+                                            <td>{{i.absence_student}}</td>
+                                            <td>{{i.date}}</td>
+                                            <td>{{i.lecturer}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                                {% else %}
+nothing is found hrer
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+
+            
+
+{% endblock content %}

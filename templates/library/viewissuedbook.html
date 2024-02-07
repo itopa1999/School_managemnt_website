@@ -1,0 +1,78 @@
+{% extends 'library/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+  thead{
+      text-align:center;
+  }
+</style>
+<div class="container-fluid">
+<!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Issued books to Student</h1>
+</div>
+                  <!-- DataTales Example -->
+                  <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Student Lists</h6>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                    {% if li %}
+                                    <tr>
+                                      <th>Student Name</th>
+                                      <th>Department</th>
+                                      <th>Book Name</th>
+                                      <th>Author</th>
+                                      <th>Issued</th>
+                                      <th>Expiry Date</th>
+                                      <th>Fine</th>
+                                      </tr>
+                                  </thead>
+                                  <tfoot>
+                                      <tr>
+                                        <tr>
+                                          <th>Student Name</th>
+                                          <th>Department</th>
+                                          <th>Book Name</th>
+                                          <th>Author</th>
+                                          <th>Issued</th>
+                                          <th>Expiry Date</th>
+                                          <th>Fine</th>
+                                          </tr>
+                                  </tfoot>
+                                  
+                                </tbody>
+                                
+                                {% for t in li %}
+                                  <tr>
+                                    <td>{{t.0}}</td>
+                                    <td>{{t.1}}</td>
+                                    <td>{{t.2}}</td>
+                                    <td>{{t.3}}</td>
+                                    <td>{{t.4}}</td>
+                                    <td>{{t.5}}</td>
+                                    <td>{{t.6}}</td>
+                                  </tr>
+                                      {% endfor %}
+                                      
+                                  </tbody>
+                                  {% else %}
+                                  nothing is found hrer
+                              {% endif %}
+                              </table>
+                              
+
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+          <br><br><br><br><br>
+              <!-- /.container-fluid -->
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'lecturer/main.html' %}
+{% block content %}
+<style>
+    #box{    
+        background-color: #09186bea;
+        color:white;
+        width:40%;
+        margin-left:35px;
+        padding-top:100px;
+        padding-left:40px;
+        padding-bottom:25px;
+        border-radius:10px;
+        font-weight:bolder;
+        font-size:20px
+    
+            }
+    
+    a {
+        text-decoration: none;
+    }
+</style>
+
+
+<a href="{% url 'lecturernewmessage' %}"><p id="box" style="margin-top:110px;">NEW MESSAGES</p></a>
+<br>
+<a href="{% url 'lecturerinbox' %}"><p id="box">INBOX MESSAGES</p></a>
+<br>
+<a href="{% url 'lecturersent' %}"><p id="box">SENT MESSAGES</p></a>
+
+
+{% for message in messages %}
+<script>
+    function message(){
+        Swal.fire({
+            title: '<strong>{{message}}!</strong>',
+            icon: 'success',
+            iconColor:'aaa',
+            width: 400,
+            showConfirmButton:false,
+            allowOutsideClick:false,
+            scrollbarPadding:false,
+            showCloseButton: true,
+          })
+          
+    }
+ {% endfor %}
+  </script>
+{% endblock content %}

@@ -1,0 +1,41 @@
+
+            {% extends 'supervisor/main.html' %}
+            {% block content %}
+            {% load static %}
+            {% load widget_tweaks %}
+            <style>
+              .con{
+                word-wrap: break-word;
+                word-break: break-all;
+               }
+            </style>
+            <div class="container-fluid">
+             <!-- Info Alert -->
+            
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">General NoticeBoard</h1>
+            </div>
+            {% if notice %}
+            {% for i in notice %} 
+            <div class="card shadow col-md-8 card border-bottom-info">
+              
+            <div class=" m-2 d-flex align-items-center">
+                
+           
+              <div class="font-weight-bold mt-3">
+                <div class=" mr-3">
+                    <img class="rounded-circle small text-gray-500" src="{{i.profile_pic.url}}"
+                        alt="..." height=50 width=50>                                
+                        {{i.sender}} . {{i.date}}</div> 
+                    <center><div class="text-gray-600 h4">{{i.title}}</div></center>
+                  <div class=" con text-gray-800">{{i.description}}<br><br></div>
+              </div>
+
+            </div>
+
+            </div>
+            {% endfor %}
+            {% else %}
+            nothing here
+            {% endif %}
+            {% endblock content %}

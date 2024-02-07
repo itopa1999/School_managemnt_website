@@ -1,0 +1,201 @@
+{% extends 'lecturer/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<style>
+
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"> My Profile</h1>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card ">
+                    <div class="header">
+                        <h4 class="title m-3">Personal Details</h4>
+                    </div>
+                    <div class="content m-3">
+                        {% for i in lec1 %}
+>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" disabled placeholder="{{i.name}}">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Staff ID</label>
+                                        <input type="text" class="form-control"  disabled placeholder="{{i.staff_ID}}">                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" class="form-control" disabled placeholder="{{i.email}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" class="form-control" disabled placeholder="{{i.phone_no}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Faculty</label>
+                                        <input type="text" class="form-control" disabled placeholder="{{i.faculty}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <input type="text" class="form-control" disabled placeholder="{{i.department}}">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <form method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Qualification</label>
+                                        {% render_field form.qualification  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Sex</label>
+                                        {% render_field form.sex  class="form-control form-control-user" %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date of Birth</label>
+                                        {% render_field form.date_of_birth type=date class="form-control form-control-user" %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Place of Birth</label>
+                                        {% render_field form.place_of_birth  class="form-control form-control-user" %}                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Marital status</label>
+                                        {% render_field form.marital_status  class="form-control form-control-user" %}                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>State of origin</label>
+                                        {% render_field form.state_of_origin  class="form-control form-control-user" %}                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        {% render_field form.nationality  class="form-control form-control-user" %}   
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        {% render_field form.state_of_origin  class="form-control form-control-user" %} 
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Local Government</label>
+                                        {% render_field form.local_government  class="form-control form-control-user" %} 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        {% render_field form.address  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                            </div>
+
+
+                            
+                                <div class="header">
+                                    <h4 class="title m-3">Other Information Profile</h4>
+                                </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Age</label>
+                                        {% render_field form.age  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Complexion</label>
+                                        {% render_field form.complexion  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Hobby</label>
+                                        {% render_field form.hobby  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Account Number</label>
+                                        {% render_field form.account_no  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Acccunt Name</label>
+                                        {% render_field form.account_bank  class="form-control form-control-user" %}                                     </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </formv>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image mt-4">
+                        <center><img class="img-profile rounded-circle" src="{{request.user.profile_pic.url}}" alt="..." width=150 height=150></center>
+                    </div>
+                    
+                        
+                <center><h4 class="title m-3">{{user.userid}}<br />
+                                 <small>{{user.position}}</small><br />
+                                 <small class="text-danger b-5">{{user.token}}</small>
+                              </h4></center>
+                      
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

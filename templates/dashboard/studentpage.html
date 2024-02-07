@@ -1,0 +1,398 @@
+
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<link href="{% static 'css/w3.css' %}" rel="stylesheet">
+<style>
+ 
+
+  table{
+    width:100%;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  .header{
+    color:#0e1c6dc9;
+    font-weight: bolder;
+  }
+
+  a {
+    text-decoration: none;
+    
+  }
+</style>
+<div class="w3-container  w3-animate-bottom">
+<div class="container-fluid">
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{stu.name}} </h1>
+</div>
+
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+    <!-- The Grid -->
+    <div class="w3-row">
+      <!-- Left Column -->
+      <div class="w3-col m3">
+        <!-- Profile -->
+        <div class="w3-card w3-round w3-white">
+          <div class="w3-container">
+           <h4 class="w3-center">{{stu.name}}</h4>
+           <p class="w3-center"><img src="{{stu.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="profile picture"></p>
+           <hr>
+           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Faculty: {{stu.faculty}}</p>
+           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Department: {{stu.department}}</p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>Date Created: {{stu.date}}</p>
+          </div>
+        </div>
+        <br>
+        
+         <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction1('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i>Files</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+         {% if fil %}
+         {% for i in fil %}
+           <div class="w3-half">
+            <b class="w3-left">{{i.title}}</b><br>
+            <a href="{{i.file.url}}"><i class="fa fa-eye " ></i></a>
+            <a href="{{i.file.url}}" download><i class="fa fa-download" ></i></a>
+            <br><br>
+           </div>
+           {% endfor %}
+           
+           
+           {% else %}
+           Nothing to view here
+           {% endif %}
+           <br><br>
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+     
+       
+        <!-- Interests --> 
+        <div class="w3-card w3-round w3-white w3-hide-small">
+          <div class="w3-container">
+            <center><h4>{{stu.name}} Registered Courses</h4></center>
+            <p>
+              {% if cou %}
+              {% for i in cou %}
+                <li>{{i.course}}</li>
+              {% endfor %}
+              {% else %}
+              No course assign for this lecturer yet
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        <br>
+        
+
+      
+      <!-- End Left Column -->
+      </div>
+      
+      <!-- Middle Column -->
+      <div class="w3-col m7">
+      
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <div class="w3-container w3-padding">
+                <h2 class="w3-opacity">{{stu.name}} profile</h2>
+
+                <p contenteditable="true" class="w3-border w3-padding">Status:{% if sta %}             
+                  {% for i in sta %} {{i.status}}{% endfor %}{% else %} {{stu.name}} has no status for today {% endif %} </p>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <table>
+        <div class="header">Student Details</div><br>
+        <tr>
+          <td>Name</td>
+          <td>{{stu.name}}</td>
+      </tr>
+      <tr>
+        <td>Matric No</td>
+        <td>{{stu.matric_no}}</td>
+      </tr>
+      <tr>
+          <td>Phone no</td>
+          <td>{{stu.phone_no}}</td>
+      </tr>
+      <tr>
+          <td>Email Address</td>
+          <td>{{stu.email}}</td>
+      </tr>
+      <tr>
+        <td>Program</td>
+        <td>{{stu.program}}</td>
+      </tr>
+      <tr>
+        <td>Faculty</td>
+        <td>{{stu.faculty}}</td>
+      </tr>
+      <tr>
+        <td>Department</td>
+        <td>{{stu.department}}</td>
+      </tr>
+      <tr>
+        <td>Level</td>
+        <td>{{stu.level}}</td>
+      </tr>
+      <tr>
+        <td>Jamb Registration Number</td>
+        <td>{{stu.jamb_reg}}</td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>{{stu.postal_address}}</td>
+    </tr>
+      <tr>
+          <td>sex</td>
+          <td>{{stu.sex}}</td>
+      </tr>
+      <tr>
+          <td>Date Of Birth</td>
+          <td>{{stu.date_of_birth}}</td>
+      </tr>
+      <tr>
+          <td>Place of Birth</td>
+          <td>{{stu.place_of_birth}}</td>
+      </tr>
+      <tr>
+          <td>Marital status</td>
+          <td>{{stu.marital_status}}</td>
+      </tr>
+      <tr>
+        <td>Nationality</td>
+        <td>{{stu.nationality}}</td>
+      </tr>
+      <tr>
+        <td>State of origin</td>
+        <td>{{stu.state_of_origin}}</td>
+      </tr>
+      <tr>
+        <td>Local Government</td>
+        <td>{{stu.local_government}}</td>
+      </tr>
+      <tr>
+        <td>Date created</td>
+        <td>{{stu.date}}</td>
+      </tr>
+      <tr>
+        <td>created By</td>
+        <td>{{stu.created_by}}</td>
+      </tr>
+                        
+                        </table>
+                        <br><br>
+                    </div>
+   
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <table>
+            <div class="header">Student Exam Details</div><br>
+
+            <div class="header">Jamb Exam Details</div>
+            <tr>
+              <td>Year</td>
+              <td>{{stu.year}}</td>
+              
+            </tr>
+            <tr>
+              <td>Examination Number</td>
+              <td>{{stu.exam_no}}</td>
+            </tr>
+            <tr>
+              <td>Slip No</td>
+              <td>{{stu.slip_no}}</td>
+            </tr>
+            <tr>
+              <td>Center No</td>
+              <td>{{stu.center_no}}</td>
+            </tr>
+            <tr>
+              <td>Jamb Score</td>
+              <td>{{stu.score}}</td>
+            </tr>
+        </table>
+
+<br><br>
+<br>        <table>
+  <div class="header">O-level Exam Details</div>
+            <tr>
+              <td>Exam Type</td>
+              <td>{{stu.name_exam}}</td>           
+            </tr>
+            <tr>
+              <td>Examination Number</td>
+              <td>{{stu.exam_no1}}</td>
+            </tr>
+            <tr>
+              <td>Center No</td>
+              <td>{{stu.center_no}}</td>
+            </tr>
+            <tr>
+              <td>Year</td>
+              <td>{{stu.year_exam}}</td>
+            </tr>
+        
+        <table>
+            <tr>
+              <th>Subjects</th>
+              <th>Grading</th>
+            </tr>
+            <tr>
+              <td>{{stu.sub1}}</td>
+              <td>{{stu.gra1}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub2}}</td>
+              <td>{{stu.gra2}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub3}}</td>
+              <td>{{stu.gra3}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub4}}</td>
+              <td>{{stu.gra4}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub5}}</td>
+              <td>{{stu.gra5}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub6}}</td>
+              <td>{{stu.gra6}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub7}}</td>
+              <td>{{stu.gra7}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub8}}</td>
+              <td>{{stu.gra8}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub9}}</td>
+              <td>{{stu.gra9}}</td>           
+            </tr>
+            <tr>
+              <td>{{stu.sub10}}</td>
+              <td>{{stu.gra10}}</td>           
+            </tr>  
+        
+                </table>
+                <br><br>
+        </div>
+  
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <table>
+              <div class="header">Other Details/Information</div><br>
+          
+              <tr>
+                  <td>Age</td>
+                  <td>{{stu.age}}</td>
+              </tr>
+              <tr>
+                  <td>Name of parent</td>
+                  <td>{{stu.name_of_parent}}</td>
+              </tr>
+              <tr>
+                  <td>Address of parent</td>
+                  <td>{{stu.address_of_parent}}</td>
+              </tr>
+              <tr>
+                  <td>Parent Phone no</td>
+                  <td>{{stu.parent_phone}}</td>
+              </tr>
+    
+              <tr>
+              <td>complexion</td>
+              <td>{{stu.complexion}}</td>
+              </tr>
+              
+              <tr>
+                <td>Account name</td>
+                <td>{{stu.account_bank}}</td>
+              </tr>
+              <tr>
+                <td>Account no</td>
+                <td>{{stu.account_no}}</td>
+              </tr>
+              <tr>
+                <td>Blood group</td>
+                <td>{{stu.blood_group}}</td>
+              </tr>
+            
+          </table>
+          <br><br>
+        </div>
+        
+        
+      <!-- End Middle Column -->
+      </div>
+      
+        
+    <!-- Right Column -->
+    <d class="w3-col m2" >
+        <a href="{% url 'updatestudent' stu.id %}" style="text-decoration:none;">
+        <div  class="w3-card w3-round w3-gray w3-padding-16 w3-center">
+          <i class="fa fa-edit fa-2x"></i> <p>Update Profile</p>
+        </div></a><br>
+     
+        
+        
+        
+        
+      <!-- End Right Column -->
+      </div>
+     
+      
+    <!-- End Grid -->
+    </div>
+    
+  <!-- End Page Container -->
+  </div>
+  <br>
+  
+  <script>
+    // Accordion
+    function myFunction1(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-theme-d1";
+        } else { 
+            x.className = x.className.replace("w3-show", "");
+            x.previousElementSibling.className = 
+            x.previousElementSibling.className.replace(" w3-theme-d1", "");
+        }
+    }
+    
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    </script>
+  
+    </script>
+{% endblock content %}       
+                          

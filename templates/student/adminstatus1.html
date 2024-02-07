@@ -1,0 +1,58 @@
+{% extends 'student/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        margin: auto;
+        top: auto;
+        width: auto;
+        height: 500px;
+        max-width: 1000px;
+        background-color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    h1, h2,{
+        color: rgba(43, 45, 46, 0.884);
+    }
+    button {
+        background-color: #0e80ebea;
+        border: none;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border-radius: 5px;
+        height: fit-content;
+        margin-left: 20px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    button:hover {
+        box-shadow: 0 5px 8px 0 #0e80ebea, 0 7px 10px 0 #0e80ebea;
+    }
+    img{
+        border-radius:50px;
+    }
+</style>
+<body>
+    <br>
+    <div class="container">
+
+        <br><br><br>
+        <img src="{{request.user.student.profile_pic.url}}" height=90 width=90 title="Profile pic">
+        <h1> Dear {{request.user.first_name}}, <br> {{info}}<br> </h1>
+        <h2> You can now have full access to the system  </h2>
+    </div>
+</body>
+</html>
+
+{% endblock %}

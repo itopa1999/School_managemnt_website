@@ -1,0 +1,326 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">View Course</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> ND1 FIRST SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res %} 
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead> 
+                                                       
+                                    {% for res in res %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        {% endfor %}
+                                         
+                                    </tr>
+                                    {% else %}
+                                    no data available to View for ND1 FIRST SEMESTER course
+                                    {% endif %}   
+                                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow mb-4">
+                        
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> ND1 SECOND SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res1 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                              
+                                    {% for res in res1 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        
+                                    </tr>
+                                        
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                        {% else %}
+                                        no data available to View for ND1 SECOND SEMESTER course
+                                        {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> ND2 FIRST SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res2 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res2 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        
+                                    </tr>
+                                        
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                        {% else %}
+                                        no data available to View for ND2 FIRST SEMESTER course
+                                        {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                           
+                            <h6 class="m-0 font-weight-bold text-primary"> ND2 SECOND SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res3 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res3 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        no data available to View for ND2 SECOND SEMESTER course
+                                        {% endif %}
+                                        
+                                    </tbody>
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> HND1 FIRST SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res4 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res4 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        </tr>
+                                       
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                    {% else %}
+                                    no data available to View for HND1 FIRST SEMESTER course
+                                    {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> HND1 SECOND SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res5 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res5 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        </tr>
+                                        
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                        {% else %}
+                                        no data available to View for HND1 SECOND SEMESTER course
+                                        {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                           
+                            <h6 class="m-0 font-weight-bold text-primary"> HND2 FIRST SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res6 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res6 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        no data available to View for HND2 FIRST SEMESTER course
+                                        {% endif %}
+                                        
+                                    </tbody>
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> HND2 SECOND SEMESTER</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if res7 %}
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th>Lecturer</th>
+                                    </thead>
+                                                                    
+                                    {% for res in res7 %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        <td >{{res.lecturer}}</td>
+                                        </tr>
+                                       
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                    {% else %}
+                                    no data available to View for HND2 SECOND SEMESTER course
+                                    {% endif %}
+                                </table>                              
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            <br><br><br><br><br>
+                <!-- /.container-fluid -->
+{% endblock content %}

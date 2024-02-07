@@ -1,0 +1,56 @@
+{% extends 'lecturer/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">My Course</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> Course list</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if cou %} 
+                                        <th>(Course code)Course Name</th>
+                                        <th>Course Unt</th>
+                                        <th>Semester</th>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                    </thead> 
+                                                       
+                                    {% for res in cou %}
+                                    <tbody>
+                                        <td>{{res.name}}</td>
+                                        <td >{{res.course_unit}}</td>
+                                        <td >{{res.semester}}</td>
+                                        <td >{{res.faculty}}</td>
+                                        <td >{{res.department}}</td>
+                                        {% endfor %}
+                                         
+                                    </tr>
+                                    {% else %}
+                                    no data available to View for ND1 FIRST SEMESTER course
+                                    {% endif %}   
+                                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+
+
+                  {% endblock content %}

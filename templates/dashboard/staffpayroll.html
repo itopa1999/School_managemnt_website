@@ -1,0 +1,61 @@
+{% extends 'dashboard/main1.html' %}
+{% block content %}
+{% load static %}
+<style>
+    thead{
+        text-align:center;
+    }
+</style>
+<div class="container-fluid">
+ <!-- Info Alert -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Staff Salary</h1>
+</div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+                            <h6 class="m-0 font-weight-bold text-primary"> Staff Salary</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        {% if pay %} 
+                                        <th>Staff</th>
+                                        <th>Actual Salary</th>
+                                        <th>VAT price</th>
+                                        <th>Pension</th>
+                                        <th>Salary</th> 
+                                        <th>Delete</th>                 
+                                    </thead> 
+                                                       
+                                    {% for res in pay %}
+                                    <tbody>
+                                        <td>{{res.staff}}</td>
+                                        <td >{{res.salary}}</td>
+                                        <td >{{res.vat}}</td>
+                                        <td >{{res.pension}}</td>
+                                        <td >{{res.r_sal}}</td>
+                                        <td><center><a href="{% url 'deletestaffpayroll' res.id %}"><i class="fa fa-trash" style="font-size:24px;color:red;"></i></center></a></td>
+                                        {% endfor %}
+                                        
+                                    </tr>
+                                    
+                                    <td ></td>
+                                    <td class="m-0 h5 font-weight-bold text-success">Total Salary</td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td class="m-0 h3 font-weight-bold text-danger">{{t_price}}</td>
+                                    {% else %}
+                                    no data available to View 
+                                    {% endif %}   
+                                                                                
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% extends 'student/main.html' %}
+
+{% block content %}
+
+<style>
+    body{
+        background: #F4F7FD;
+        margin-top:20px;
+    }
+    
+    .card-margin {
+        margin-bottom: 1.875rem;
+    }
+    
+    .card {
+        border: 0;
+        box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    }
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #ffffff;
+        background-clip: border-box;
+        border: 1px solid #e6e4e9;
+        border-radius: 8px;
+    }
+    
+    .card .card-header.no-border {
+        border: 0;
+    }
+    .card .card-header {
+        background: none;
+        padding: 0 0.9375rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        min-height: 50px;
+   
+    .widget-49 .widget-49-meeting-points {
+      font-weight: 400;
+      font-size: 13px;
+      margin-top: .5rem;
+    }
+
+    
+    </style>
+  
+  
+    <br><br>
+  <div class="container">
+    <div class="dark d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class=" dark h3 mb-0 text-gray" >Exam Details</h1>
+    </div>
+    <div class="jumbotron">
+    <div class="row">
+            <div class="card card-margin">
+                <div class="card border-info mx-4 my-4">
+                  <h4 class="card-title text-info"  style="margin:5px;">Student Details :</h4
+                  <p class="card-text">
+                      </p><ul style="list-style:decimal;">
+                          <li>Student Namae : {{stu1}}</li>
+                          <li>Matric_no : {{mat}}</li>
+                          <li>Department : {{dep}}</li>
+                          <li>Level : {{lev}}</li>
+                      </ul>
+
+                      <h4 class="card-title text-info"  style="margin:5px;">Exam Details :</h4
+                        <p class="card-text">
+                            </p><ul style="list-style:decimal;">
+                                <li>Course : {{course.name}}</li>
+                                <li>Lecturer : {{course.lecturer}}</li>
+                                <li>Semester : {{course.semester}}</li>
+                                <li>Total Question : {{total_questions}}</li>
+                                <li>Total Marks : {{total_marks}}</li>
+                            </ul>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-meeting-info">
+                            <center><span class="widget-49-pro-title text-info"><h3>EXAM INSTRUCTIONS</h3></span></center>
+                                <span class="widget-49-meeting-time"><b style="color:black;">Read carefully</b></span>
+                            </div>
+                        </div>
+                        
+                        <ol class="widget-49-meeting-points">
+                            <li><span class="widget-49-meeting-time">This Examination is 1hour 30minutes</li>
+                            <li><span class="widget-49-meeting-time">Answers will be automatically be submitted if the time expires</li>
+                            <li><span class="widget-49-meeting-time">Once You click "ENTER EXAMINATION" no refreshing, no going to previous page</li>
+                            <li><span class="widget-49-meeting-time">Exam will be automatically be submitted if there is refreshing of page and previous page</li>
+                                <li><span class="widget-49-meeting-time">once the answer is submitted, you are not allowed to re-write the same Examination</li>
+                                <li><span class="widget-49-meeting-time">All questions are MCQ (multiple choice question)</li>
+                                <li><span class="widget-49-meeting-time"><span class="text-danger">Only one choice is correct among the options.</span></li>
+                                <li><span class="widget-49-meeting-time">Every question might carry different marks.</li>
+                                <li><span class="widget-49-meeting-time">Try to answer As sooon as possible.</li>
+                                <li><span class="widget-49-meeting-time">If you PRESS refresh or go back to the previous page, there will be a new question for you and the question you were on will be counted as number of attempts.</li>
+                                <li><span class="widget-49-meeting-time">Questions are presented randomly.</li>
+                                <li><span class="widget-49-meeting-time">You will be able to view marks immediately once after you submit the answer.</li>
+                                    <li><span class="widget-49-meeting-time">IF YOU NOTICE ANY ERROR OR PROBLEM, CALL OUT TO THE SUPERVISOR.</li>
+                        </ol>
+                        <p></p>
+                        <a href="{% url 'startexam' course.id %}" class="btn btn-success" style="border-radius:0px;"><i class="fa fa-pencil"></i> Enter Examination</a>
+                    
+                    <div style="background-color:inherit;" class="card-footer text-info"><b>Best Of Luck, {{stu}}! </b></div>  
+        
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  {% endblock content%}

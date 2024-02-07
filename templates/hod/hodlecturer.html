@@ -1,0 +1,311 @@
+{% extends 'hod/main.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<style>
+  table{
+    width:100%;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  .header{
+    color:#0e1c6dc9;
+    font-weight: bolder;
+  }
+
+  a {
+    text-decoration: none;
+  }
+</style>
+<link href="{% static 'css/w3.css' %}" rel="stylesheet">
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{lec.name}} </h1>
+</div>
+
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+    <!-- The Grid -->
+    <div class="w3-row">
+      <!-- Left Column -->
+      <div class="w3-col m3">
+        <!-- Profile -->
+        <div class="w3-card w3-round w3-white">
+          <div class="w3-container">
+           <h4 class="w3-center">{{lec.name}}</h4>
+           <p class="w3-center"><img src="{{lec.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="profile picture"></p>
+           <hr>
+           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Faculty: {{lec.faculty}}</p>
+           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Department: {{lec.department}}</p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>Date Created: {{lec.date}}</p>
+          </div>
+        </div>
+        <br>
+        
+         <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction1('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i>Files</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+         {% if fil %}
+         {% for i in fil %}
+           <div class="w3-half">
+            <b class="w3-left">{{i.title}}</b><br>
+            <a href="{{i.file.url}}"><i class="fa fa-eye " ></i></a>
+            <a href="{{i.file.url}}" download><i class="fa fa-download" ></i></a>
+            <br><br>
+           </div>
+           {% endfor %}
+           
+           
+           {% else %}
+           Nothing to view here
+           {% endif %}
+           <br><br>
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+     
+       
+        <!-- Interests --> 
+        <div class="w3-card w3-round w3-white w3-hide-small">
+          <div class="w3-container">
+           <center> <h5>Course Taken</h5></center>
+            <p>
+              {% if cou %}
+              {% for i in cou %}
+                <li>{{i.name}}</li>
+              {% endfor %}
+              {% else %}
+              No course assign for this lecturer yet
+              {% endif %}
+             
+            </p>
+          </div>
+        </div>
+        <br>
+      
+      <!-- End Left Column -->
+      </div>
+      
+      <!-- Middle Column -->
+      <div class="w3-col m7">
+      
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <div class="w3-container w3-padding">
+                <h2 class="w3-opacity">{{lec.name}} profile</h2>
+                
+                <p contenteditable="true" class="w3-border w3-padding">Status:{% if sta %}             
+                {% for i in sta %} {{i.status}}{% endfor %}{% else %} {{lec.name}} has no status for today {% endif %} </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <div class="header">Lecturer Details</div>
+                    <td>
+                        <p><table id="infoTable">
+                            <tr>
+                              <th style="width:40%;"></th>
+                              <th></th>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{lec.name}}</td>
+                            </tr>
+        
+                            <tr>
+                                <td>Phone no</td>
+                                <td>{{lec.phone_no}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email Address</td>
+                                <td>{{lec.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Qualification</td>
+                                <td>{{lec.qualification}}</td>
+                            </tr>
+                            <tr>
+                                <td>sex</td>
+                                <td>{{lec.sex}}</td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Birth</td>
+                                <td>{{lec.date_of_birth}}</td>
+                            </tr>
+                            <tr>
+                                <td>Place of Birth</td>
+                                <td>{{lec.place_of_birth}}</td>
+                            </tr>
+                            <tr>
+                                <td>Marital status</td>
+                                <td>{{lec.marital_status}}</td>
+                            </tr>
+                           
+                          <tr>
+                            <td>State of origin</td>
+                            <td>{{lec.state_of_origin}}</td>
+                        </tr>
+                        <tr>
+                                <td>Local Government</td>
+                                <td>{{lec.local_government}}</td>
+                            </tr>
+                            <tr>
+                              <td>Nationality</td>
+                              <td>{{lec.nationality}}</td>
+                          </tr>
+                          <tr>
+                            <td>Address</td>
+                            <td>{{lec.address}}</td>
+                        </tr>
+                          <tr>
+                            <td>Department</td>
+                            <td>{{lec.department}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Created</td>
+                            <td>{{lec.date}}</td>
+                        </tr>
+                        <tr>
+                          <td>Created By</td>
+                          <td>{{lec.created_by}}</td>
+                      </tr>
+                        
+                        </table>
+                        <br><br>
+                    </div>
+   
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <table>
+            <div class="header">Previous place of work Details</div><br>
+                <tr>
+                  {% if work %}
+                  <th>Place of Work</th>
+                  <th>Start Year</th>
+                  <th>End Year</th>
+                  <th>Achievement</th>
+                </tr>
+                {% for work in work %}
+                <tr>
+                  <td>{{work.place}}</td>
+                  <td>{{work.start}}</td>
+                  <td>{{work.end}}</td>
+                  <td>{{work.achievement}}</td>
+
+                  {% endfor %}
+                  {% else %}
+                  Nothing to display here
+                  {% endif %}
+                </table>
+                <br><br>
+        </div>
+  
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <table>
+              <div class="header">Institution Attendance Details</div><br>
+            <tr>
+              {% if ins %}
+                
+              
+                <th>Institution</th>
+                <th>Start Year</th>
+                <th>End Year</th>
+                <th>Qualification</th>
+              </tr>
+              {% for ins in ins %}
+              <tr>
+                <td>{{ins.place}}</td>
+                <td>{{ins.start}}</td>
+                <td>{{ins.end}}</td>
+                <td>{{ins.qua}}</td>                     
+              </tr>
+                  {% endfor %} 
+                  {% else %}
+                  Nothing to display here
+                  {% endif %}
+          </table>
+          <br><br>
+        </div>
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <table>
+              <div class="header">Other Information</div><br>
+            
+                <td>Age</td>
+                <td>{{lec.age}}</td>
+            </tr>
+           
+            <tr>
+                <td>complexion</td>
+                <td>{{lec.complexion}}</td>
+            </tr>
+            <tr>
+              <td>Hobby</td>
+              <td>{{lec.hobby}}</td>
+          </tr>
+          <tr>
+            <td>Account name</td>
+            <td>{{lec.account_bank}}</td>
+        </tr>
+        <tr>
+                <td>Account no</td>
+                <td>{{lec.account_no}}</td>
+            </tr>
+    </table>
+          <br><br>
+        
+        </div>
+        
+      <!-- End Middle Column -->
+      </div>
+      
+        
+    <!-- Right Column -->
+
+      
+    <!-- End Grid -->
+    </div>
+    
+  <!-- End Page Container -->
+  </div>
+  <br>
+  
+  <script>
+    // Accordion
+    function myFunction1(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-theme-d1";
+        } else { 
+            x.className = x.className.replace("w3-show", "");
+            x.previousElementSibling.className = 
+            x.previousElementSibling.className.replace(" w3-theme-d1", "");
+        }
+    }
+    
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    </script>
+
+    
+{% endblock content %}

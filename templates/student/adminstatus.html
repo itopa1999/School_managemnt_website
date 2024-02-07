@@ -1,0 +1,32 @@
+{% extends 'student/main.html' %}
+{% load static %}
+{% block content %}
+<style> 
+ .form{
+    height:50px;
+ }
+    </style>
+  
+    <div class="container-fluid">
+      <!-- Info Alert -->
+     
+      <div class=" dark d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class=" dark h3 mb-0 text-gray-800" > Admission Status</h1>
+    </div>
+     
+  
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <input type="text" class=" form form-control" name="token" placeholder="Enter Token">
+      </div>
+  
+    <input class="btn mt-3 btn-primary" type="submit">
+  </form>
+  
+  
+  </div>
+  
+
+{% endblock content %}

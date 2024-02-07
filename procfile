@@ -1,0 +1,1 @@
+web: gunicorn ajayiportal.wsgi --log-file -
